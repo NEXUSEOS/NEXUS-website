@@ -1,3 +1,4 @@
+import { createContext, useContext, type ReactNode } from 'react'
 import type { Session, User } from '@supabase/supabase-js'
 import type { PermissionKey, ConfigRoleName } from './nexus-config'
 
@@ -79,40 +80,58 @@ export interface AuthContextValue extends AuthState {
   signOutUser: () => Promise<void>
 }
 
-type Component<T> = import('react').ComponentType<T>
+const defaultAuthContext: AuthContextValue = {
+  user: null,
+  session: null,
+  loading: false,
+  isConfigured: false,
+  profile: null,
+  settings: null,
+  profileLoading: false,
+  refreshProfile: async () => undefined,
+  signOutUser: async () => undefined,
+}
 
-export const AuthContext = null as unknown as import('react').Context<AuthContextValue | null>
+export const AuthContext = createContext<AuthContextValue | null>(defaultAuthContext)
 
 export interface AuthProviderProps {
-  children: import('react').ReactNode
+  children: ReactNode
 }
 
-export const AuthProvider = null as unknown as Component<AuthProviderProps>
-
-export const useAuth = null as unknown as () => AuthContextValue
-
-export const usePermissions = null as unknown as () => {
-  role: RoleName
-  isAuthenticated: boolean
-  hasPermission: (permission: PermissionKey) => boolean
-  hasRole: (allowedRoles: RoleName[]) => boolean
+export function AuthProvider({ children }: AuthProviderProps) {
+  return <AuthContext.Provider value={defaultAuthContext}>{children}</AuthContext.Provider>
 }
+
+export function useAuth(): AuthContextValue {
+  return useContext(AuthContext) ?? defaultAuthContext
+}
+
+export function usePermissions() {
+  return {
+    role: RoleName.VISITOR,
+    isAuthenticated: false,
+    hasPermission: (_permission: PermissionKey) => false,
+    hasRole: (_allowedRoles: RoleName[]) => false,
+  }
+}
+
+type Component<T> = import('react').ComponentType<T>
 
 export const RoleGuard = null as unknown as Component<{
-  children: import('react').ReactNode
+  children: ReactNode
   allowedRoles: readonly RoleName[]
   portalName: string
 }>
 
 export const PermissionGuard = null as unknown as Component<{
-  children: import('react').ReactNode
+  children: ReactNode
   permission: PermissionKey
   resourceName?: string
-  fallback?: import('react').ReactNode
+  fallback?: ReactNode
 }>
 
 export const ProtectedRoute = null as unknown as Component<{
-  children: import('react').ReactNode
+  children: ReactNode
   redirectTo?: string
 }>
 

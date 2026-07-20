@@ -84,12 +84,14 @@ export default defineConfig({
       }),
       '@nexus/ui': resolveNexus('ui', {
         nodeModule: nodeModule('@nexus/ui/index.ts'),
+        extension: 'tsx',
       }),
       '@nexus/config': resolveNexus('config', {
         nodeModule: nodeModule('@nexus/config/index.ts'),
       }),
       '@nexus/auth': resolveNexus('auth', {
         nodeModule: nodeModule('@nexus/auth/index.ts'),
+        extension: 'tsx',
       }),
       '@nexus/analytics': resolveNexus('analytics', {
         nodeModule: nodeModule('@nexus/analytics/index.ts'),

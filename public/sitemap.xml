@@ -1,219 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/</loc>
+    <loc>https://nexuseos.github.io/nexus-website/</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/atlas</loc>
+    <loc>https://nexuseos.github.io/nexus-website/atlas</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/nova</loc>
+    <loc>https://nexuseos.github.io/nexus-website/nova</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/sentinel</loc>
+    <loc>https://nexuseos.github.io/nexus-website/sentinel</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/studio</loc>
+    <loc>https://nexuseos.github.io/nexus-website/studio</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/robots</loc>
+    <loc>https://nexuseos.github.io/nexus-website/robots</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/marketplace</loc>
+    <loc>https://nexuseos.github.io/nexus-website/marketplace</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/developers</loc>
+    <loc>https://nexuseos.github.io/nexus-website/developers</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/sdk</loc>
+    <loc>https://nexuseos.github.io/nexus-website/sdk</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/sponsors</loc>
+    <loc>https://nexuseos.github.io/nexus-website/sponsors</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/sponsors/tiers</loc>
+    <loc>https://nexuseos.github.io/nexus-website/sponsors/tiers</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/documentation</loc>
+    <loc>https://nexuseos.github.io/nexus-website/documentation</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/sdk</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/sdk</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/api</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/api</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/tutorials</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/tutorials</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/guides</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/guides</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/guides/platform-overview</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/guides/platform-overview</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/guides/behavior-workspace</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/guides/behavior-workspace</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/tutorials/sdk-quick-start</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/tutorials/sdk-quick-start</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/examples</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/examples</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/blog</loc>
+    <loc>https://nexuseos.github.io/nexus-website/blog</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/releases</loc>
+    <loc>https://nexuseos.github.io/nexus-website/releases</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/changelog</loc>
+    <loc>https://nexuseos.github.io/nexus-website/changelog</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/architecture</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/architecture</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/architecture/behavior-package</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/architecture/behavior-package</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/architecture/marketplace-pipeline</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/architecture/marketplace-pipeline</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/architecture/sdk-cli</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/architecture/sdk-cli</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/docs/architecture/digital-twin</loc>
+    <loc>https://nexuseos.github.io/nexus-website/docs/architecture/digital-twin</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/roadmap</loc>
+    <loc>https://nexuseos.github.io/nexus-website/roadmap</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/contact</loc>
+    <loc>https://nexuseos.github.io/nexus-website/contact</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/company</loc>
+    <loc>https://nexuseos.github.io/nexus-website/company</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/about</loc>
+    <loc>https://nexuseos.github.io/nexus-website/about</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/mission</loc>
+    <loc>https://nexuseos.github.io/nexus-website/mission</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/vision</loc>
+    <loc>https://nexuseos.github.io/nexus-website/vision</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/news</loc>
+    <loc>https://nexuseos.github.io/nexus-website/news</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/technology</loc>
+    <loc>https://nexuseos.github.io/nexus-website/technology</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/investors</loc>
+    <loc>https://nexuseos.github.io/nexus-website/investors</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/careers</loc>
+    <loc>https://nexuseos.github.io/nexus-website/careers</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/legal</loc>
+    <loc>https://nexuseos.github.io/nexus-website/legal</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/legal/privacy</loc>
+    <loc>https://nexuseos.github.io/nexus-website/legal/privacy</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/legal/terms</loc>
+    <loc>https://nexuseos.github.io/nexus-website/legal/terms</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/download</loc>
+    <loc>https://nexuseos.github.io/nexus-website/download</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/community</loc>
+    <loc>https://nexuseos.github.io/nexus-website/community</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/learning</loc>
+    <loc>https://nexuseos.github.io/nexus-website/learning</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/pricing</loc>
+    <loc>https://nexuseos.github.io/nexus-website/pricing</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/beta</loc>
+    <loc>https://nexuseos.github.io/nexus-website/beta</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/support</loc>
+    <loc>https://nexuseos.github.io/nexus-website/support</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/status</loc>
+    <loc>https://nexuseos.github.io/nexus-website/status</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/copilot</loc>
+    <loc>https://nexuseos.github.io/nexus-website/copilot</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/visual-dev</loc>
+    <loc>https://nexuseos.github.io/nexus-website/visual-dev</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/atlas-engineering</loc>
+    <loc>https://nexuseos.github.io/nexus-website/atlas-engineering</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/auth/login</loc>
+    <loc>https://nexuseos.github.io/nexus-website/auth/login</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nexuseos.github.io/NEXUS-website/auth/sign-up</loc>
+    <loc>https://nexuseos.github.io/nexus-website/auth/sign-up</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

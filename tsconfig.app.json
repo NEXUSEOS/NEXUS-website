@@ -11,9 +11,9 @@
     "baseUrl": ".",
     "paths": {
       "@nexus/theme": ["./src/shims/nexus-theme.ts"],
-      "@nexus/ui": ["./src/shims/nexus-ui.ts"],
+      "@nexus/ui": ["./src/shims/nexus-ui.tsx"],
       "@nexus/config": ["./src/shims/nexus-config.ts"],
-      "@nexus/auth": ["./src/shims/nexus-auth.ts"],
+      "@nexus/auth": ["./src/shims/nexus-auth.tsx"],
       "@nexus/analytics": ["./src/shims/nexus-analytics.ts"],
       "@nexus/downloads": ["./src/shims/nexus-downloads.ts"],
       "@nexus/aether": ["./src/shims/nexus-aether.ts"],

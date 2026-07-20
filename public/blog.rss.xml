@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NEXUS Engineering Blog</title>
-    <link>https://nexuseos.github.io/NEXUS-website/blog</link>
+    <link>https://nexuseos.github.io/nexus-website/blog</link>
     <description>NEXUS platform engineering updates, SDK news, and ecosystem announcements.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Jul 2026 21:09:11 GMT</lastBuildDate>
-    <atom:link href="https://nexuseos.github.io/NEXUS-website/blog.rss.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Mon, 20 Jul 2026 21:50:51 GMT</lastBuildDate>
+    <atom:link href="https://nexuseos.github.io/nexus-website/blog.rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>NEXUS v0.2 — Production Gateway Launch</title>
-      <link>https://nexuseos.github.io/NEXUS-website/blog/nexus-v0-2-production-gateway</link>
-      <guid isPermaLink="true">https://nexuseos.github.io/NEXUS-website/blog/nexus-v0-2-production-gateway</guid>
+      <link>https://nexuseos.github.io/nexus-website/blog/nexus-v0-2-production-gateway</link>
+      <guid isPermaLink="true">https://nexuseos.github.io/nexus-website/blog/nexus-v0-2-production-gateway</guid>
       <pubDate>Fri, 10 Jul 2026 12:00:00 GMT</pubDate>
       <author>NEXUS Platform Engineering</author>
       <description>The NEXUS website becomes the official production entry point for developers, sponsors, and future robot owners.</description>
     </item>
     <item>
       <title>Introducing the Behavior Workspace Architecture</title>
-      <link>https://nexuseos.github.io/NEXUS-website/blog/behavior-workspace-architecture</link>
-      <guid isPermaLink="true">https://nexuseos.github.io/NEXUS-website/blog/behavior-workspace-architecture</guid>
+      <link>https://nexuseos.github.io/nexus-website/blog/behavior-workspace-architecture</link>
+      <guid isPermaLink="true">https://nexuseos.github.io/nexus-website/blog/behavior-workspace-architecture</guid>
       <pubDate>Fri, 10 Jul 2026 12:00:00 GMT</pubDate>
       <author>NEXUS SDK Team</author>
       <description>First look at behavior metadata, versioning, and publishing — architecture preview without on-robot execution.</description>
     </item>
     <item>
       <title>Shared Platform Extraction Complete</title>
-      <link>https://nexuseos.github.io/NEXUS-website/blog/shared-platform-extraction</link>
-      <guid isPermaLink="true">https://nexuseos.github.io/NEXUS-website/blog/shared-platform-extraction</guid>
+      <link>https://nexuseos.github.io/nexus-website/blog/shared-platform-extraction</link>
+      <guid isPermaLink="true">https://nexuseos.github.io/nexus-website/blog/shared-platform-extraction</guid>
       <pubDate>Fri, 10 Jul 2026 12:00:00 GMT</pubDate>
       <author>NEXUS Platform Engineering</author>
       <description>Seven @nexus packages now power the website and prepare Studio, Cloud, and Marketplace applications.</description>
