@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthLayout } from '../../components/auth'
 import { Button } from '../../components/ui'
+import { useAsyncMount } from '../../hooks'
 import { routes } from '../../config'
 import {
   completeSetup,
@@ -44,9 +45,7 @@ export default function AdminSetup() {
     }
   }, [])
 
-  useEffect(() => {
-    void load()
-  }, [load])
+  useAsyncMount(load)
 
   async function handleStepSubmit(event: FormEvent) {
     event.preventDefault()

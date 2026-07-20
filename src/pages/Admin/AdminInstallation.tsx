@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, GlassPanel, Heading, Text } from '@nexus/ui'
+import { useAsyncMount } from '../../hooks'
 import { fetchInstallationDashboard } from '../../services/platform/installationService'
 
 /** EPIC 66 — Website Installation Center for first-run admin routing. */
@@ -21,9 +22,7 @@ export default function AdminInstallation() {
     }
   }, [])
 
-  useEffect(() => {
-    void refresh()
-  }, [refresh])
+  useAsyncMount(refresh)
 
   const progress = (data?.setupProgress ?? {}) as { percent?: number; completed?: number; total?: number; steps?: Array<{ stepKey: string; title: string; completed: boolean; panelRoute: string }> }
   const actions = (data?.requiredActions ?? []) as Array<{ id: string; title: string; severity: string }>

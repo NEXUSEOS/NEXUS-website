@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { GlassPanel, Button, Heading, Text } from '@nexus/ui'
+import { useAsyncMount } from '../../hooks'
 
 const CLOUD_URL = import.meta.env.VITE_NEXUS_CLOUD_URL ?? 'http://localhost:8787'
 
@@ -30,9 +31,7 @@ export default function AdminConnections() {
     setRows(data.rows)
   }, [])
 
-  useEffect(() => {
-    void refresh()
-  }, [refresh])
+  useAsyncMount(refresh)
 
   return (
     <GlassPanel className="admin-page">

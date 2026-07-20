@@ -141,6 +141,32 @@ Ecosystem certification (19 components), E2E journey validation (21 suites), com
 | Studio panel | `ProductionCertificationDashboardPanel` |
 | Master docs | `MASTER_PLATFORM_CERTIFICATION.md`, `MASTER_CONNECTION_INVENTORY.md`, `MASTER_DEPLOYMENT_GUIDE.md`, `MASTER_ADMIN_GUIDE.md`, `MASTER_OPERATOR_GUIDE.md`, `MASTER_RECOVERY_GUIDE.md` |
 
+### EPIC 69 — GitHub Pages Deployment ✓
+
+GitHub Pages deployment status engine, Connect GitHub wizard, Mission Control deployment card. STOP: prior EPIC 70 repo report references EPIC 69 integration.
+
+| Item | Status |
+|------|--------|
+| Service code | `packages/deployment/src/githubPagesDeployment.ts` |
+| API routes | `/v1/mission-control/github-deployment`, `/v1/mission-control/github-connect-wizard` |
+| Studio panel | `GitHubDeploymentStatusPanel` |
+| Website service | `fetchGitHubDeploymentStatus()` |
+
+### EPIC 70 — Repository Initialization & CI Build Stabilization ✓ (local)
+
+Ecosystem repository audit, CI lint/build stabilization, Mission Control CI Health widget. STOP: `EPIC-70-CI-STOP-REPORT.md`, `EPIC-70-STOP-REPORT.md`.
+
+| Item | Status |
+|------|--------|
+| Local lint/build | **Pass** — `npm run lint`, `npm run build`, `tsc --noEmit` |
+| Remote CI/Pages | **Blocked** — empty GitHub repo; invalid `gh` auth |
+| Service code | `packages/deployment/src/repositoryAudit.ts`, `ciBuildHealth.ts` |
+| API routes | `/v1/mission-control/repository-infrastructure`, `/v1/mission-control/ci-health` |
+| Homepage feed | `overviews.ciHealth`, `overviews.repositoryInfrastructure` |
+| Studio panel | `CiBuildHealthPanel` |
+| Website admin | `AdminCiHealthWidget` on `/admin` |
+| Docs | `CI_BUILD_REPORT.md`, `LINT_FIX_REPORT.md`, `DEPLOYMENT_FIX_REPORT.md` |
+
 ### Earlier epics referenced in STOP reports
 
 | Epic | Title | One-line summary |
@@ -155,8 +181,8 @@ Ecosystem certification (19 components), E2E journey validation (21 suites), com
 | Repository | Build (verified 2026-07-20) | Key packages / surfaces | Latest epic work |
 |------------|------------------------------|-------------------------|------------------|
 | **nexus-cloud** | **Pass** — `npx tsc --noEmit` | 50+ workspace packages; `@nexus-cloud/api`, `connection-orchestrator`, `mission-control`, `automation-engine`, `executive-platform`, `production-operations`, `launch-validation`, `live-services`, `platform-operations` | EPICs 66–68 complete; EPIC 65 production activation |
-| **nexus-website** | **Pass** — `npm run build` (bundle warning: `three` chunk >500 kB) | Vite SPA; `@nexus/platform`, Supabase auth; admin, developer, sponsor portals | EPIC 64 website completion; EPIC 66 installation center; EPIC 68 master docs |
-| **nexus-studio** | **Pass** — `npx tsc --noEmit` | Electron + Command Center (100+ panels); Mission Control first in grid after wizards | EPICs 66–68 panels (Installation, Live Services, Production Certification) |
+| **nexus-website** | **Pass** — `npm run lint`, `npm run build` (bundle warning: `three` chunk >500 kB) | Vite SPA; `@nexus/platform`, Supabase auth; admin, developer, sponsor portals | EPIC 70 CI stabilization; EPIC 64 website completion |
+| **nexus-studio** | **Pass** — `npx tsc --noEmit` | Electron + Command Center (100+ panels); Mission Control first in grid after wizards | EPIC 70 `CiBuildHealthPanel`; EPICs 66–68 panels |
 | **nexus-sdk** | **Pass** — `tsc` | 19 packages: `behavior`, `simulation`, `ros`, `cli`, `atlas`, `ai`, `fleet`, etc. | EPIC 53 CLI `connect validate` |
 | **nexus-platform** | **Pass** — `tsc` | 12 packages: `ui`, `auth`, `theme`, `integration`, `analytics`, `cms-renderer`, etc. | Shared foundation for website and studio |
 | **nexus-specifications** | Documentation repo (no `package.json`) | ADRs through **ADR-256** (Production Certification Dashboard) | ADR-245–256 cover EPICs 66–68 |
@@ -620,6 +646,9 @@ cd nexus-cloud && npm run db:migrate
 # Build website for GitHub Pages
 cd nexus-website && npm run build:pages
 
+# CI validation (local — matches GitHub Actions ci.yml)
+cd nexus-website && npm run lint && npm run build && npx tsc --noEmit -p tsconfig.json
+
 # Website E2E
 cd nexus-website && npm run test:e2e
 
@@ -635,7 +664,8 @@ cd nexus-website && npm run test:e2e
 
 | Source | Path |
 |--------|------|
-| EPIC STOP reports | `docs/platform/EPIC-{55..68}-STOP-REPORT.md` |
+| EPIC STOP reports | `docs/platform/EPIC-{55..70}-STOP-REPORT.md`, `EPIC-70-CI-STOP-REPORT.md` |
+| CI / lint reports | `docs/platform/CI_BUILD_REPORT.md`, `LINT_FIX_REPORT.md`, `DEPLOYMENT_FIX_REPORT.md` |
 | Master docs (EPIC 68) | `docs/platform/MASTER_PLATFORM_CERTIFICATION.md`, `docs/platform/MASTER_CONNECTION_INVENTORY.md`, `docs/operations/MASTER_DEPLOYMENT_GUIDE.md`, `docs/operations/MASTER_ADMIN_GUIDE.md`, `docs/operations/MASTER_OPERATOR_GUIDE.md`, `docs/operations/MASTER_RECOVERY_GUIDE.md` |
 | Operations guides | `docs/operations/` |
 | Env template | `docs/operations/PRODUCTION_ENV_TEMPLATE.md` |

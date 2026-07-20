@@ -5,6 +5,7 @@ import { routes } from '../../config'
 import { useAuth } from '../../hooks'
 import { listOrganizations } from '../../services/developer/developerPortalService'
 import { createCheckoutSession, fetchPublicPricing, type PricingPlan } from '../../services/commercial/commercialService'
+import { redirectToExternalUrl } from '../../utils/redirect'
 import { Button, Heading, Text } from '../../components/ui'
 
 export default function PricingPage() {
@@ -33,7 +34,7 @@ export default function PricingPage() {
       if (!orgId) throw new Error('Create an organization first')
       const { session } = await createCheckoutSession(orgId, planSlug)
       if (session.checkoutUrl) {
-        window.location.href = session.checkoutUrl
+        redirectToExternalUrl(session.checkoutUrl)
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Checkout failed')

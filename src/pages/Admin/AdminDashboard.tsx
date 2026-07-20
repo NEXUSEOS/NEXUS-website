@@ -1,7 +1,9 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Button, GlassPanel, Heading, Text } from '@nexus/ui'
+import { useAsyncMount } from '../../hooks'
 import { fetchMissionControlHomepage, runMissionControlAction } from '../../services/platform/missionControlService'
 import { fetchAdminWizardHub } from '../../services/platform/adminExperienceService'
+import AdminCiHealthWidget from './AdminCiHealthWidget'
 
 type MissionAction = {
   id: string
@@ -37,12 +39,11 @@ export default function AdminDashboard() {
     }
   }, [])
 
-  useEffect(() => {
-    void refresh()
-  }, [refresh])
+  useAsyncMount(refresh)
 
   const kpiTiles = (data?.kpiTiles ?? {}) as Record<string, unknown>
   const overviews = (data?.overviews ?? {}) as Record<string, Record<string, unknown>>
+  const ciHealth = overviews.ciHealth as Record<string, unknown> | null | undefined
   const actions = (data?.requiredActions ?? data?.actions ?? []) as MissionAction[]
   const activityFeed = (data?.activityFeed ?? []) as unknown[]
   const auditFeed = (data?.auditFeed ?? []) as Array<{ serviceId?: string; action?: string; createdAt?: string }>
@@ -113,6 +114,8 @@ export default function AdminDashboard() {
           <div className="admin-stat"><Text variant="caption">Wizard Hub</Text><strong>{hubSummary.completed ?? 0}/{hubSummary.total ?? 11} ({hubSummary.percentComplete ?? 0}%)</strong></div>
         </div>
       </section>
+
+      <AdminCiHealthWidget overview={ciHealth ?? null} />
 
       {Object.keys(overviews).length > 0 && (
         <section>

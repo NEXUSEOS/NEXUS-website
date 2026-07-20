@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { GlassPanel, Button, Heading, Text } from '@nexus/ui'
+import { useAsyncMount } from '../../hooks'
 import { CmsPageRenderer, CmsThemeProvider } from '@nexus/cms-renderer'
 import { CMS_COMPONENT_PALETTE, createDefaultLayout, type CmsComponentType } from '@nexus/sdk-cms'
 import { createWebsiteCmsClient } from '../../services/cms/cmsContentService'
@@ -15,7 +16,7 @@ export default function AdminCmsBuilder() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
-  const client = createWebsiteCmsClient()
+  const client = useMemo(() => createWebsiteCmsClient(), [])
 
   const refreshPages = useCallback(async () => {
     setLoading(true)
@@ -27,11 +28,9 @@ export default function AdminCmsBuilder() {
     } finally {
       setLoading(false)
     }
-  }, [portal])
+  }, [portal, client])
 
-  useEffect(() => {
-    void refreshPages()
-  }, [refreshPages])
+  useAsyncMount(refreshPages)
 
   async function loadPage(id: string) {
     setLoading(true)

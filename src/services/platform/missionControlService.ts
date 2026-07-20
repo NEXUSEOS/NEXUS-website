@@ -72,6 +72,10 @@ export async function fetchGitHubDeploymentStatus() {
   return res.json() as Promise<{ status: Record<string, unknown> }>
 }
 
+export async function fetchCiBuildHealth() {
+  return missionFetch<{ health: Record<string, unknown> }>('/ci-health')
+}
+
 export async function runMissionControlAction(endpoint: string, method: 'GET' | 'POST' = 'POST') {
   const token = getAccessToken()
   const headers: Record<string, string> = { 'Content-Type': 'application/json' }

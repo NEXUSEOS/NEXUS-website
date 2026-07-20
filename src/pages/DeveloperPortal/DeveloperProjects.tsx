@@ -1,36 +1,37 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { GlassPanel, Heading, Text } from '../../components/ui'
-import { useAuth } from '../../hooks'
+import { useAsyncMount, useAuth } from '../../hooks'
 import { fetchDeveloperProjects } from '../../services/platform/integrationService'
 import '../../layouts/PortalLayout.css'
 
 export default function DeveloperProjects() {
   const { session } = useAuth()
+  const token = session?.access_token
   const [projects, setProjects] = useState<Array<{ id: string; name: string; status: string }>>([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    const token = session?.access_token
+  const loadProjects = useCallback(async () => {
     if (!token) {
+      setProjects([])
+      setError(null)
       setLoading(false)
       return
     }
-    let active = true
-    fetchDeveloperProjects(token)
-      .then((records) => {
-        if (active) setProjects(records)
-      })
-      .catch((err) => {
-        if (active) setError(err instanceof Error ? err.message : 'Failed to load projects')
-      })
-      .finally(() => {
-        if (active) setLoading(false)
-      })
-    return () => {
-      active = false
+
+    setLoading(true)
+    setError(null)
+    try {
+      setProjects(await fetchDeveloperProjects(token))
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to load projects')
+      setProjects([])
+    } finally {
+      setLoading(false)
     }
-  }, [session?.access_token])
+  }, [token])
+
+  useAsyncMount(loadProjects)
 
   return (
     <div>
@@ -42,10 +43,10 @@ export default function DeveloperProjects() {
       </div>
       {loading ? <Text variant="muted">Loading projects…</Text> : null}
       {error ? <Text variant="caption">{error}</Text> : null}
-      {!loading && !session?.access_token ? (
+      {!loading && !token ? (
         <Text variant="muted">Sign in to view cloud-synced projects.</Text>
       ) : null}
-      {!loading && session?.access_token && projects.length === 0 && !error ? (
+      {!loading && token && projects.length === 0 && !error ? (
         <Text variant="muted">No projects synced yet. Create a project in NEXUS Studio or the SDK CLI.</Text>
       ) : null}
       <div className="download-grid">

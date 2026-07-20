@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { GlassPanel, Button, Heading, Text } from '@nexus/ui'
+import { useAsyncMount } from '../../hooks'
 import { fetchSecretsRegistry, syncSecretsRegistry } from '../../services/platform/platformAdminService'
 
 export default function AdminSecrets() {
   const [secrets, setSecrets] = useState<Array<{ secretKey: string; status: string; description: string }>>([])
   const [loading, setLoading] = useState(false)
 
-  async function refresh() {
+  const refresh = useCallback(async () => {
     setLoading(true)
     try {
       const data = await fetchSecretsRegistry()
@@ -14,11 +15,9 @@ export default function AdminSecrets() {
     } finally {
       setLoading(false)
     }
-  }
-
-  useEffect(() => {
-    void refresh()
   }, [])
+
+  useAsyncMount(refresh)
 
   return (
     <GlassPanel className="admin-page">

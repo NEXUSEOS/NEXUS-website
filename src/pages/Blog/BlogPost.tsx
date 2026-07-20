@@ -9,20 +9,29 @@ import NotFound from '../NotFound/NotFound'
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
+  const hasSlug = Boolean(slug)
   const [post, setPost] = useState<Awaited<ReturnType<typeof fetchPublishedBlogPost>> | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [notFound, setNotFound] = useState(false)
+  const [loading, setLoading] = useState(hasSlug)
+  const [notFound, setNotFound] = useState(!hasSlug)
 
   useEffect(() => {
-    if (!slug) {
-      setNotFound(true)
-      setLoading(false)
-      return
-    }
+    if (!slug) return
+
+    let active = true
     fetchPublishedBlogPost(slug)
-      .then(setPost)
-      .catch(() => setNotFound(true))
-      .finally(() => setLoading(false))
+      .then((result) => {
+        if (active) setPost(result)
+      })
+      .catch(() => {
+        if (active) setNotFound(true)
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+      })
+
+    return () => {
+      active = false
+    }
   }, [slug])
 
   if (loading) {

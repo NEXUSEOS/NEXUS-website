@@ -10,21 +10,30 @@ export default function CheckoutSuccessPage() {
   const { user } = useAuth()
   const [params] = useSearchParams()
   const sessionId = params.get('session_id')
-  const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading')
+  const [status, setStatus] = useState<'loading' | 'success' | 'error'>(() =>
+    sessionId ? 'loading' : 'success',
+  )
 
   useEffect(() => {
-    if (!user || !sessionId) {
-      setStatus(sessionId ? 'loading' : 'success')
-      return
-    }
+    if (!user || !sessionId) return
+
+    let active = true
     void listOrganizations()
       .then((orgs) => {
         const orgId = orgs[0]?.id
         if (!orgId) throw new Error('No organization')
         return completeCheckoutSession(orgId, sessionId)
       })
-      .then(() => setStatus('success'))
-      .catch(() => setStatus('error'))
+      .then(() => {
+        if (active) setStatus('success')
+      })
+      .catch(() => {
+        if (active) setStatus('error')
+      })
+
+    return () => {
+      active = false
+    }
   }, [user, sessionId])
 
   return (

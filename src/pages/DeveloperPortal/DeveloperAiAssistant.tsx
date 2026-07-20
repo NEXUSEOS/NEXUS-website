@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Heading, Text } from '../../components/ui'
 import { aiDeveloperChat, aiGenerateBehavior } from '../../services/developer/developerOpsService'
 
@@ -6,19 +6,20 @@ function orgId(): string {
   return localStorage.getItem('nexus-organization-id') ?? ''
 }
 
+function initialOrgError(): string | null {
+  if (typeof localStorage === 'undefined') return null
+  return !localStorage.getItem('nexus-organization-id')
+    ? 'Set nexus-organization-id in localStorage after selecting an organization'
+    : null
+}
+
 export default function DeveloperAiAssistant() {
   const [message, setMessage] = useState('How do I publish a behavior package to the marketplace?')
   const [reply, setReply] = useState<string | null>(null)
   const [behaviorDesc, setBehaviorDesc] = useState('Patrol loop with obstacle avoidance')
   const [generatedGraph, setGeneratedGraph] = useState<string | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(initialOrgError)
   const [busy, setBusy] = useState(false)
-
-  useEffect(() => {
-    if (!localStorage.getItem('nexus-organization-id') && orgId() === '') {
-      setError('Set nexus-organization-id in localStorage after selecting an organization')
-    }
-  }, [])
 
   async function sendChat() {
     const id = orgId()
