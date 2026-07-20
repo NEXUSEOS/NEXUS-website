@@ -1,0 +1,136 @@
+{
+  "generatedAt": "2026-07-19T21:18:22.070Z",
+  "environment": "production",
+  "checks": [
+    {
+      "key": "NEXUS_CLOUD_URL",
+      "category": "cloud_api",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "DATABASE_URL",
+      "category": "database",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "SUPABASE_URL",
+      "category": "supabase",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "SUPABASE_ANON_KEY",
+      "category": "supabase",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "SUPABASE_SERVICE_ROLE_KEY",
+      "category": "supabase",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "WEBSITE_URL",
+      "category": "website",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "STRIPE_SECRET_KEY",
+      "category": "billing",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "GITHUB_TOKEN",
+      "category": "github",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "CLOUDFLARE_API_TOKEN",
+      "category": "cdn",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "OPENAI_API_KEY",
+      "category": "ai",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "VITE_SUPABASE_URL",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "VITE_SUPABASE_ANON_KEY",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "VITE_NEXUS_CLOUD_URL",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "VITE_BASE_PATH",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "VITE_SITE_URL",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "SENDGRID_API_KEY",
+      "category": "email",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "CONTAINER_REGISTRY",
+      "category": "cloud_api",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "GRAFANA_URL",
+      "category": "monitoring",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "GRAFANA_API_KEY",
+      "category": "monitoring",
+      "required": false,
+      "configured": false
+    }
+  ],
+  "requiredMissing": [
+    "NEXUS_CLOUD_URL",
+    "DATABASE_URL",
+    "SUPABASE_URL",
+    "SUPABASE_ANON_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY",
+    "WEBSITE_URL",
+    "STRIPE_SECRET_KEY",
+    "GITHUB_TOKEN",
+    "CLOUDFLARE_API_TOKEN",
+    "OPENAI_API_KEY"
+  ],
+  "score": 0,
+  "passed": false,
+  "migrationPresent": true,
+  "templatePresent": true
+}

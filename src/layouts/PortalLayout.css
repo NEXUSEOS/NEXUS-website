@@ -1,0 +1,150 @@
+.portal-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--spacing-8);
+  min-height: 60vh;
+  padding: var(--spacing-12) 0;
+}
+
+.portal-layout__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.portal-layout__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.portal-layout__nav-link {
+  display: block;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-caption);
+  letter-spacing: var(--letter-spacing-caption);
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.portal-layout__nav-link:hover {
+  color: var(--color-text);
+  background: var(--color-glass);
+}
+
+.portal-layout__nav-link--active {
+  color: var(--color-accent);
+  background: var(--color-glass);
+  border: 1px solid var(--color-border);
+}
+
+.portal-layout__nav-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.portal-layout__content {
+  min-width: 0;
+}
+
+.portal-layout__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-8);
+}
+
+.portal-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+}
+
+.portal-metric {
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-glass);
+}
+
+.portal-metric__label {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-2);
+}
+
+.portal-metric__value {
+  font-size: var(--font-size-title);
+  color: var(--color-text);
+}
+
+.download-grid {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.download-card {
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.download-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+}
+
+.download-card__actions {
+  display: flex;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.tier-grid {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.tier-card {
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.tier-card__benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 900px) {
+  .portal-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .portal-layout__nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .portal-layout__nav {
+    flex-direction: column;
+  }
+}

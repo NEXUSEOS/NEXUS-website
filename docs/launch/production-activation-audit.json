@@ -1,0 +1,231 @@
+{
+  "generatedAt": "2026-07-19T22:14:32.054Z",
+  "environment": "production",
+  "mode": "full_audit",
+  "checks": [
+    {
+      "key": "NEXUS_CLOUD_URL",
+      "category": "cloud_api",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "DATABASE_URL",
+      "category": "database",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "SUPABASE_URL",
+      "category": "supabase",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "SUPABASE_ANON_KEY",
+      "category": "supabase",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "SUPABASE_SERVICE_ROLE_KEY",
+      "category": "supabase",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "WEBSITE_URL",
+      "category": "website",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "STRIPE_SECRET_KEY",
+      "category": "billing",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "GITHUB_TOKEN",
+      "category": "github",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "CLOUDFLARE_API_TOKEN",
+      "category": "cdn",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "OPENAI_API_KEY",
+      "category": "ai",
+      "required": true,
+      "configured": false
+    },
+    {
+      "key": "VITE_SUPABASE_URL",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "VITE_SUPABASE_ANON_KEY",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "VITE_NEXUS_CLOUD_URL",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "VITE_BASE_PATH",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "VITE_SITE_URL",
+      "category": "website",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "SENDGRID_API_KEY",
+      "category": "email",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "CONTAINER_REGISTRY",
+      "category": "cloud_api",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "GRAFANA_URL",
+      "category": "monitoring",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "GRAFANA_API_KEY",
+      "category": "monitoring",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "SENTRY_DSN",
+      "category": "monitoring",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "SLACK_WEBHOOK_URL",
+      "category": "alerting",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "BACKUP_BUCKET",
+      "category": "storage",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "OAUTH_GOOGLE_CLIENT_ID",
+      "category": "auth",
+      "required": false,
+      "configured": false
+    },
+    {
+      "key": "OAUTH_GITHUB_CLIENT_ID",
+      "category": "auth",
+      "required": false,
+      "configured": false
+    }
+  ],
+  "requiredMissing": [
+    "NEXUS_CLOUD_URL",
+    "DATABASE_URL",
+    "SUPABASE_URL",
+    "SUPABASE_ANON_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY",
+    "WEBSITE_URL",
+    "STRIPE_SECRET_KEY",
+    "GITHUB_TOKEN",
+    "CLOUDFLARE_API_TOKEN",
+    "OPENAI_API_KEY"
+  ],
+  "score": 0,
+  "passed": false,
+  "migrationPresent": true,
+  "migration0053Present": true,
+  "templatePresent": true,
+  "artifactChecks": [
+    {
+      "id": "deploy_pages_workflow",
+      "passed": true,
+      "detail": "GitHub Pages deploy workflow"
+    },
+    {
+      "id": "cloud_deploy_workflow",
+      "passed": true,
+      "detail": "Cloud deploy workflow"
+    },
+    {
+      "id": "migration_0053",
+      "passed": true,
+      "detail": "EPIC 65 migration"
+    },
+    {
+      "id": "production_activation_service",
+      "passed": true,
+      "detail": "Production activation service"
+    },
+    {
+      "id": "vite_config",
+      "passed": true,
+      "detail": "Vite config"
+    },
+    {
+      "id": "build_pages_script",
+      "passed": true,
+      "detail": "build:pages script"
+    }
+  ],
+  "liveProbes": [
+    {
+      "id": "live_github_pages",
+      "passed": false,
+      "detail": "fetch failed"
+    },
+    {
+      "id": "live_cloud_health",
+      "passed": false,
+      "detail": "fetch failed"
+    },
+    {
+      "id": "live_cloud_ready",
+      "passed": false,
+      "detail": "fetch failed"
+    },
+    {
+      "id": "live_supabase_auth",
+      "passed": false,
+      "detail": "SUPABASE_URL not configured"
+    }
+  ],
+  "auditScore": 60,
+  "qualityGate": {
+    "githubPages": false,
+    "websiteDeployed": true,
+    "cloud": false,
+    "supabase": false,
+    "envRegistry": false,
+    "productionActivationComplete": false
+  }
+}

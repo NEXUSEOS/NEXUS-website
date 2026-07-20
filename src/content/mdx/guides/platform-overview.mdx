@@ -1,0 +1,24 @@
+import { MdxCallout } from '../components'
+
+# NEXUS Platform Overview
+
+Welcome to the NEXUS robotics ecosystem documentation.
+
+<MdxCallout>
+  This page is rendered from MDX. Long-form documentation migrates here from static catalogs during
+  incubation.
+</MdxCallout>
+
+## Repository Model
+
+- **nexus-website** — public gateway, documentation, portals
+- **nexus-platform** — shared packages (`@nexus/theme`, `@nexus/ui`, `@nexus/auth`, …)
+- **nexus-sdk** — SDK packages and CLI
+- **nexus-cloud** — APIs, registry, telemetry
+- **nexus-marketplace** — package publishing
+- **nexus-studio** — desktop IDE and behavior editor
+- **nexus-os** — robot runtime
+
+## Dependency Direction
+
+Applications consume shared packages. Shared packages never depend on applications.

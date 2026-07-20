@@ -1,0 +1,155 @@
+{
+  "generatedAt": "2026-07-14T03:29:11.748Z",
+  "organizations": [
+    {
+      "name": "NEXUS Robotics",
+      "slug": "nexus-robotics",
+      "status": "MISSING (run migration 0017 or provision-identity.mjs)",
+      "id": null
+    },
+    {
+      "name": "Internal Engineering",
+      "slug": "internal-engineering",
+      "status": "MISSING (run migration 0017 or provision-identity.mjs)",
+      "id": null
+    },
+    {
+      "name": "Developer Sandbox",
+      "slug": "developer-sandbox",
+      "status": "MISSING (run migration 0017 or provision-identity.mjs)",
+      "id": null
+    },
+    {
+      "name": "Sponsor Sandbox",
+      "slug": "sponsor-sandbox",
+      "status": "MISSING (run migration 0017 or provision-identity.mjs)",
+      "id": null
+    },
+    {
+      "name": "Manufacturing",
+      "slug": "manufacturing",
+      "status": "MISSING (run migration 0017 or provision-identity.mjs)",
+      "id": null
+    },
+    {
+      "name": "Operations",
+      "slug": "operations",
+      "status": "MISSING (run migration 0017 or provision-identity.mjs)",
+      "id": null
+    },
+    {
+      "name": "Platform Administration",
+      "slug": "platform-administration",
+      "status": "MISSING (run migration 0017 or provision-identity.mjs)",
+      "id": null
+    }
+  ],
+  "manifestSlots": [
+    {
+      "slot": "platform-super-admin",
+      "platformRole": "super_administrator",
+      "organizationSlug": "platform-administration",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "platform-administrator",
+      "platformRole": "administrator",
+      "organizationSlug": "platform-administration",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "engineering-lead",
+      "platformRole": "engineering_lead",
+      "organizationSlug": "internal-engineering",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "developer-sandbox",
+      "platformRole": "developer",
+      "organizationSlug": "developer-sandbox",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "sdk-developer",
+      "platformRole": "sdk_developer",
+      "organizationSlug": "developer-sandbox",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "marketplace-publisher",
+      "platformRole": "marketplace_publisher",
+      "organizationSlug": "nexus-robotics",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "sponsor-sandbox",
+      "platformRole": "sponsor",
+      "organizationSlug": "sponsor-sandbox",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "investor",
+      "platformRole": "investor",
+      "organizationSlug": "sponsor-sandbox",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "moderator",
+      "platformRole": "moderator",
+      "organizationSlug": "operations",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "editor",
+      "platformRole": "editor",
+      "organizationSlug": "operations",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "support",
+      "platformRole": "support",
+      "organizationSlug": "operations",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "manufacturing",
+      "platformRole": "manufacturing",
+      "organizationSlug": "manufacturing",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "qa",
+      "platformRole": "qa",
+      "organizationSlug": "internal-engineering",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "fleet-manager",
+      "platformRole": "fleet_manager",
+      "organizationSlug": "operations",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "robot-operator",
+      "platformRole": "robot_operator",
+      "organizationSlug": "manufacturing",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "demo-user",
+      "platformRole": "demo_user",
+      "organizationSlug": "developer-sandbox",
+      "status": "PLACEHOLDER"
+    },
+    {
+      "slot": "viewer",
+      "platformRole": "viewer",
+      "organizationSlug": "nexus-robotics",
+      "status": "PLACEHOLDER"
+    }
+  ],
+  "databaseConnected": false,
+  "databaseError": null,
+  "cloudMemberCount": 0,
+  "apiKeyCount": 0
+}

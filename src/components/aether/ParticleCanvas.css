@@ -1,0 +1,12 @@
+.particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.particle-canvas__canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

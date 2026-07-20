@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "types": ["vite/client"],
+    "allowArbitraryExtensions": true,
+    "skipLibCheck": true,
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@nexus/theme": ["./src/shims/nexus-theme.ts"],
+      "@nexus/ui": ["./src/shims/nexus-ui.ts"],
+      "@nexus/config": ["./src/shims/nexus-config.ts"],
+      "@nexus/auth": ["./src/shims/nexus-auth.ts"],
+      "@nexus/analytics": ["./src/shims/nexus-analytics.ts"],
+      "@nexus/downloads": ["./src/shims/nexus-downloads.ts"],
+      "@nexus/aether": ["./src/shims/nexus-aether.ts"],
+      "@nexus/aether/src/aetherContext": ["./src/shims/nexus-aether.ts"],
+      "@nexus/aether/src/utils": ["./src/shims/nexus-aether.ts"],
+      "@nexus/cms-renderer": ["../nexus-platform/packages/cms-renderer/src/index.ts"],
+      "@nexus/cms-renderer/styles.css": ["../nexus-platform/packages/cms-renderer/src/cms-renderer.css"],
+      "@nexus/sdk-cms": ["../nexus-sdk/packages/cms/src/index.ts"]
+    },
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-07-14T01:39:12.661Z",
+  "builds": {
+    "nexus-cloud": "pass",
+    "nexus-website": "pass",
+    "nexus-studio": "pass",
+    "nexus-sdk": "pass",
+    "nexus-platform": "pass"
+  },
+  "integrationTest": "pass",
+  "qualityGate": {
+    "ecosystemBuilds": true,
+    "integrationTest": true
+  }
+}

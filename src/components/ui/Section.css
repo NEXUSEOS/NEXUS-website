@@ -1,0 +1,14 @@
+.section {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+}
+
+.section--compact {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+}
+
+.section--flush {
+  padding-top: var(--spacing-0);
+  padding-bottom: var(--spacing-0);
+}

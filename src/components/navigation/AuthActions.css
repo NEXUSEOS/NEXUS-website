@@ -1,0 +1,28 @@
+.navigation__auth {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.navigation__user {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .navigation__auth {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .navigation__user {
+    max-width: 100%;
+    text-align: center;
+  }
+}

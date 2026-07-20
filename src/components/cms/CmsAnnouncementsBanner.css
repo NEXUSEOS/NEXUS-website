@@ -1,0 +1,28 @@
+.cms-announcements {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.cms-announcements__item {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+}
+
+.cms-announcements__item--warning {
+  background: rgba(234, 179, 8, 0.12);
+  border-color: rgba(234, 179, 8, 0.4);
+}
+
+.cms-announcements__item--error {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.cms-announcements__item strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}

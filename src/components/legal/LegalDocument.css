@@ -1,0 +1,16 @@
+.legal-document {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-8);
+}
+
+.legal-document__section {
+  padding: var(--spacing-6);
+}
+
+.legal-document__paragraph {
+  display: block;
+  margin-top: var(--spacing-3);
+  line-height: 1.6;
+}

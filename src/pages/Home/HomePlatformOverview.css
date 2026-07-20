@@ -1,0 +1,34 @@
+.home-platform {
+  padding-block: var(--spacing-12);
+}
+
+.home-platform__intro {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.home-platform__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.home-platform__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6);
+}
+
+.home-platform__link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.home-platform__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  justify-content: center;
+  margin-top: var(--spacing-10);
+}

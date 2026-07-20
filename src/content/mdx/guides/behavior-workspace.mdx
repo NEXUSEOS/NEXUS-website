@@ -1,0 +1,21 @@
+import { MdxCallout } from '../components'
+
+# Behavior Workspace
+
+The Behavior Workspace lets developers create, version, and publish behavior metadata before on-robot execution is available.
+
+<MdxCallout>
+  Architecture preview only — persistence uses localStorage until nexus-cloud APIs ship.
+</MdxCallout>
+
+## Lifecycle
+
+1. **Create** — draft metadata in Developer Portal
+2. **Save** — persist draft locally
+3. **Version** — semver bump with changelog
+4. **Publish** — mark ready for marketplace pipeline
+5. **Archive** — retire obsolete behaviors
+
+## Metadata Fields
+
+Behavior ID, name, version, author, description, robot compatibility, sensors, hardware, AI models, motion packs, dependencies, safety level, permissions, categories, tags, license, and status.
