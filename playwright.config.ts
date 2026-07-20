@@ -1,5 +1,9 @@
 import { defineConfig, devices } from '@playwright/test'
 
+const previewBaseUrl = 'http://localhost:4173'
+const devBaseUrl = 'http://localhost:5173'
+const baseURL = process.env.E2E_BASE_URL ?? (process.env.CI ? previewBaseUrl : devBaseUrl)
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
@@ -7,7 +11,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: 'list',
   use: {
-    baseURL: process.env.E2E_BASE_URL ?? 'http://localhost:5173',
+    baseURL,
     trace: 'on-first-retry',
   },
   projects: [
@@ -17,7 +21,7 @@ export default defineConfig({
     ? undefined
     : {
         command: process.env.CI ? 'npm run preview' : 'npm run dev',
-        url: process.env.CI ? 'http://localhost:4173' : 'http://localhost:5173',
+        url: process.env.CI ? previewBaseUrl : devBaseUrl,
         reuseExistingServer: !process.env.CI,
       },
 })
