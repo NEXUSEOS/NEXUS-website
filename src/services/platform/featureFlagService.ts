@@ -18,8 +18,9 @@ function getAccessToken(): string | undefined {
 
 export async function loadCloudFeatureFlags(): Promise<Record<string, boolean>> {
   const client = createPlatformClient({ cloudBaseUrl: CLOUD_URL, accessToken: getAccessToken() })
-  cachedFlags = await client.resolveFeatureFlags({ environment: import.meta.env.MODE })
-  return cachedFlags
+  const flags = await client.resolveFeatureFlags({ environment: import.meta.env.MODE })
+  cachedFlags = flags
+  return flags
 }
 
 export function getCloudFeatureFlags(): Record<string, boolean> {

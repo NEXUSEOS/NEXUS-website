@@ -18,10 +18,18 @@
       "@nexus/downloads": ["./src/shims/nexus-downloads.ts"],
       "@nexus/aether": ["./src/shims/nexus-aether.ts"],
       "@nexus/aether/src/aetherContext": ["./src/shims/nexus-aether.ts"],
-      "@nexus/aether/src/utils": ["./src/shims/nexus-aether.ts"],
-      "@nexus/cms-renderer": ["../nexus-platform/packages/cms-renderer/src/index.ts"],
-      "@nexus/cms-renderer/styles.css": ["../nexus-platform/packages/cms-renderer/src/cms-renderer.css"],
-      "@nexus/sdk-cms": ["../nexus-sdk/packages/cms/src/index.ts"]
+      "@nexus/theme/globals.css": ["./src/shims/nexus-theme.css"],
+      "@nexus/downloads/downloads.css": ["./src/shims/nexus-downloads.css"],
+      "@nexus/navigation": ["./src/shims/nexus-navigation.tsx"],
+      "@nexus/navigation/styles.css": ["./src/shims/nexus-navigation.css"],
+      "@nexus/integration": ["./src/shims/nexus-integration.ts"],
+      "@nexus/platform": ["./src/shims/nexus-platform.ts"],
+      "@nexus/sdk-cms": ["./src/shims/nexus-sdk-cms.ts"],
+      "@nexus/sdk-platform": ["./src/shims/nexus-sdk-platform.ts"],
+      "@nexus/cms-renderer": ["./src/shims/nexus-cms-renderer.tsx"],
+      "@nexus/cms-renderer/styles.css": ["./src/shims/nexus-cms-renderer.css"],
+      "@nexus/design-system": ["./src/shims/nexus-design-system.css"],
+      "@nexus/design-system/globals.css": ["./src/shims/nexus-design-system.css"]
     },
 
     /* Bundler mode */
