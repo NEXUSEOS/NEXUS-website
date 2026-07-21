@@ -1,10 +1,15 @@
 import { useCallback, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Button, GlassPanel, Heading, Text } from '@nexus/ui'
 import { useAsyncMount } from '../../hooks'
 import { fetchMissionControlHomepage, runMissionControlAction } from '../../services/platform/missionControlService'
+import { fetchConnectionHealthMatrix } from '../../services/platform/connectionOrchestratorService'
+import { EPIC_PLATFORM_SERVICES } from '../../config/platformServices'
 import { fetchAdminWizardHub } from '../../services/platform/adminExperienceService'
 import AdminCiHealthWidget from './AdminCiHealthWidget'
 import AdminMissionControlNav from './AdminMissionControlNav'
+import AdminServiceTiles, { type ServiceTile } from './AdminServiceTiles'
+import './AdminPages.css'
 
 type MissionAction = {
   id: string
@@ -15,7 +20,7 @@ type MissionAction = {
   method?: 'GET' | 'POST'
 }
 
-/** EPIC 59 + EPIC 63 — Primary administrator landing: Mission Control homepage. */
+/** EPIC 59 + EPIC 63 + EPIC 71 — Primary administrator landing: Mission Control homepage. */
 export default function AdminDashboard() {
   const [data, setData] = useState<Record<string, unknown> | null>(null)
   const [wizardHub, setWizardHub] = useState<Record<string, unknown> | null>(null)
@@ -27,10 +32,28 @@ export default function AdminDashboard() {
     setLoading(true)
     setError(null)
     try {
-      const [homepage, hub] = await Promise.all([
+      const [homepage, hub, matrix] = await Promise.all([
         fetchMissionControlHomepage(),
         fetchAdminWizardHub().catch(() => null),
+        fetchConnectionHealthMatrix().catch(() => null),
       ])
+      if (!homepage.serviceTiles && matrix) {
+        homepage.serviceTiles = EPIC_PLATFORM_SERVICES.map((svc) => {
+          const conn = svc.connectionId
+            ? matrix.connections.find((c) => c.serviceId === svc.connectionId)
+            : undefined
+          return {
+            id: svc.id,
+            name: svc.name,
+            category: svc.category,
+            status: conn?.status ?? 'local_only',
+            health: conn?.health ?? 'unknown',
+            adminPath: svc.adminPath,
+            owner: svc.owner,
+            description: svc.description,
+          }
+        })
+      }
       setData(homepage)
       setWizardHub(hub)
     } catch (err) {
@@ -42,6 +65,7 @@ export default function AdminDashboard() {
 
   useAsyncMount(refresh)
 
+  const degraded = Boolean(data?.degraded)
   const kpiTiles = (data?.kpiTiles ?? {}) as Record<string, unknown>
   const overviews = (data?.overviews ?? {}) as Record<string, Record<string, unknown>>
   const ciHealth = overviews.ciHealth as Record<string, unknown> | null | undefined
@@ -51,6 +75,7 @@ export default function AdminDashboard() {
   const aiRecommendations = ((data?.aiRecommendations as { all?: Array<{ title: string; priority: string }> })?.all) ?? []
   const alerts = (data?.alerts ?? {}) as Record<string, number>
   const hubSummary = (wizardHub?.summary ?? {}) as { percentComplete?: number; completed?: number; total?: number }
+  const serviceTiles = (data?.serviceTiles ?? []) as ServiceTile[]
 
   async function handleAction(action: MissionAction) {
     if (!action.endpoint) return
@@ -69,17 +94,31 @@ export default function AdminDashboard() {
       <Text variant="caption">Administrator homepage — configure everything through UI wizards. Zero code access required.</Text>
       <Text variant="muted">Open NEXUS Studio → Command Center for full panel navigation and wizard hub.</Text>
 
+      {degraded && (
+        <div className="admin-banner" role="status">
+          <Text variant="caption">
+            {String(data?.message ?? 'Cloud API not configured — showing local platform catalog.')}
+            {' '}
+            <Link to="/admin/setup">Open Setup Wizard</Link>
+            {' · '}
+            <Link to="/admin/secrets">Configure Secrets</Link>
+          </Text>
+        </div>
+      )}
+
       <div className="admin-page__actions">
         <Button variant="primary" onClick={() => void refresh()} disabled={loading}>
           Refresh
         </Button>
+        <Link to="/admin/connections"><Button variant="secondary">Connection Orchestrator</Button></Link>
+        <Link to="/admin/installation"><Button variant="secondary">Installation Center</Button></Link>
       </div>
 
       {loading && <Text variant="muted">Loading…</Text>}
       {error && <p role="alert">{error}</p>}
       {actionMessage && <p role="status">{actionMessage}</p>}
 
-      {Object.keys(kpiTiles).length > 0 && (
+      {(Object.keys(kpiTiles).length > 0 || degraded) && (
         <section>
           <Heading as="h3" level="title">Platform KPIs</Heading>
           <div className="admin-stats">
@@ -105,6 +144,8 @@ export default function AdminDashboard() {
           </div>
         </section>
       )}
+
+      {serviceTiles.length > 0 && <AdminServiceTiles tiles={serviceTiles} />}
 
       <section>
         <Heading as="h3" level="title">Alerts & Wizard Progress</Heading>

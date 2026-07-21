@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { GlassPanel, Heading, Text } from '@nexus/ui'
 import './AdminLayout.css'
+import '../pages/Admin/AdminPages.css'
 
 const ADMIN_NAV: Array<{ path: string; label: string; end?: boolean }> = [
   { path: '/admin', label: 'Mission Control', end: true },

@@ -1,10 +1,31 @@
 # NEXUS Platform — Next Phase Handoff
 
-**Generated:** 2026-07-20  
-**Scope:** Post EPIC 55–68 (Phase 9–10 complete; production certification ready)  
+**Generated:** 2026-07-21  
+**Scope:** Post EPIC 71 (Production Experience & Live Integration complete)  
 **Audience:** Platform engineering, operations, and leadership preparing the next development phase
 
 This document summarizes the current NEXUS platform architecture, completed epic work, repository and database state, production configuration requirements, known blockers, and recommended next steps. All facts below were verified against the codebase (`nexus-cloud`, `nexus-website`, `nexus-studio`, `nexus-sdk`, `nexus-platform`, `nexus-specifications`) and EPIC STOP reports in `docs/platform/`.
+
+---
+
+## EPIC 71 — Production Experience & Live Integration (2026-07-21)
+
+**Status:** PASS — see `EPIC-71-LIVE-INTEGRATION-STOP-REPORT.md`
+
+| Deliverable | Location |
+|-------------|----------|
+| Cloud API client with graceful errors | `src/services/platform/cloudApiClient.ts` |
+| Connection Orchestrator website integration | `src/services/platform/connectionOrchestratorService.ts` |
+| Mission Control fallback homepage | `src/services/platform/missionControlFallback.ts` |
+| 25-service platform catalog | `src/config/platformServices.ts` |
+| Admin UI polish | `AdminDashboard`, `AdminConnections`, `AdminPages.css` |
+
+**Next recommended steps:**
+
+1. Set `VITE_NEXUS_CLOUD_URL` in GitHub Pages deploy workflow secrets
+2. Run Lighthouse audit against live URL
+3. Enable platform admin auth for live health matrix probes
+4. Phase 12: production Cloud deployment + end-to-end credential validation
 
 ---
 

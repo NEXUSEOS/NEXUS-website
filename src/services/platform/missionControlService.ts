@@ -1,28 +1,8 @@
-const CLOUD_URL = import.meta.env.VITE_NEXUS_CLOUD_URL ?? 'http://localhost:8787'
-
-function getAccessToken(): string | undefined {
-  try {
-    const key = Object.keys(localStorage).find((k) => k.startsWith('sb-') && k.endsWith('-auth-token'))
-    if (!key) return undefined
-    const raw = localStorage.getItem(key)
-    if (!raw) return undefined
-    return (JSON.parse(raw) as { access_token?: string }).access_token
-  } catch {
-    return undefined
-  }
-}
+import { cloudFetch, CloudApiError } from './cloudApiClient'
+import { buildMissionControlFallbackHomepage } from './missionControlFallback'
 
 async function missionFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const headers: Record<string, string> = { 'Content-Type': 'application/json', ...(init?.headers as Record<string, string>) }
-  const token = getAccessToken()
-  if (token) headers.Authorization = `Bearer ${token}`
-
-  const res = await fetch(`${CLOUD_URL.replace(/\/$/, '')}/v1/mission-control${path}`, { ...init, headers })
-  if (!res.ok) {
-    const err = (await res.json().catch(() => ({}))) as { message?: string }
-    throw new Error(err.message ?? `Mission Control error ${res.status}`)
-  }
-  return res.json() as Promise<T>
+  return cloudFetch<T>(`/v1/mission-control${path}`, init)
 }
 
 export async function fetchMissionControlDashboard() {
@@ -42,21 +22,25 @@ export async function fetchMissionControlHealth() {
 }
 
 export async function fetchUnifiedMissionControl() {
-  const token = getAccessToken()
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  if (token) headers.Authorization = `Bearer ${token}`
-  const res = await fetch(`${CLOUD_URL.replace(/\/$/, '')}/v1/command-center/mission-control`, { headers })
-  if (!res.ok) throw new Error(`Mission Control error ${res.status}`)
-  return res.json() as Promise<Record<string, unknown>>
+  try {
+    return await cloudFetch<Record<string, unknown>>('/v1/command-center/mission-control')
+  } catch (err) {
+    if (err instanceof CloudApiError && (err.code === 'unreachable' || err.code === 'unauthorized')) {
+      return buildMissionControlFallbackHomepage()
+    }
+    throw err
+  }
 }
 
 export async function fetchMissionControlHomepage() {
-  const token = getAccessToken()
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  if (token) headers.Authorization = `Bearer ${token}`
-  const res = await fetch(`${CLOUD_URL.replace(/\/$/, '')}/v1/mission-control/homepage`, { headers })
-  if (!res.ok) throw new Error(`Mission Control homepage error ${res.status}`)
-  return res.json() as Promise<Record<string, unknown>>
+  try {
+    return await cloudFetch<Record<string, unknown>>('/v1/mission-control/homepage')
+  } catch (err) {
+    if (err instanceof CloudApiError && (err.code === 'unreachable' || err.code === 'unauthorized')) {
+      return buildMissionControlFallbackHomepage()
+    }
+    throw err
+  }
 }
 
 export async function fetchRepositoryInfrastructure() {
@@ -64,12 +48,7 @@ export async function fetchRepositoryInfrastructure() {
 }
 
 export async function fetchGitHubDeploymentStatus() {
-  const token = getAccessToken()
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  if (token) headers.Authorization = `Bearer ${token}`
-  const res = await fetch(`${CLOUD_URL.replace(/\/$/, '')}/v1/mission-control/github-deployment`, { headers })
-  if (!res.ok) throw new Error(`GitHub deployment status error ${res.status}`)
-  return res.json() as Promise<{ status: Record<string, unknown> }>
+  return cloudFetch<{ status: Record<string, unknown> }>('/v1/mission-control/github-deployment')
 }
 
 export async function fetchCiBuildHealth() {
@@ -77,10 +56,5 @@ export async function fetchCiBuildHealth() {
 }
 
 export async function runMissionControlAction(endpoint: string, method: 'GET' | 'POST' = 'POST') {
-  const token = getAccessToken()
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  if (token) headers.Authorization = `Bearer ${token}`
-  const res = await fetch(`${CLOUD_URL.replace(/\/$/, '')}${endpoint}`, { method, headers })
-  if (!res.ok) throw new Error(`Action failed (${res.status})`)
-  return res.json()
+  return cloudFetch(endpoint.startsWith('/v1') ? endpoint : `/v1${endpoint}`, { method })
 }
