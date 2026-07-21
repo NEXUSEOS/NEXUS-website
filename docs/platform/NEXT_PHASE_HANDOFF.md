@@ -167,6 +167,20 @@ Ecosystem repository audit, CI lint/build stabilization, Mission Control CI Heal
 | Website admin | `AdminCiHealthWidget` on `/admin` |
 | Docs | `CI_BUILD_REPORT.md`, `LINT_FIX_REPORT.md`, `DEPLOYMENT_FIX_REPORT.md` |
 
+### EPIC 71 — Production UI Recovery & Experience Polish ✓ (local)
+
+GitHub Pages white screen recovery, production-grade `@nexus/*` shims, Mission Control quick navigation. STOP: `EPIC-71-STOP-REPORT.md`.
+
+| Item | Status |
+|------|--------|
+| Root cause | **Identified** — null config shims + empty CSS globals in CI build |
+| Shim-only build | **Pass** — `VITE_FORCE_SHIMS=true npm run build:pages` |
+| Local render verify | **Pass** — Playwright smoke on 6 routes |
+| Live Pages verify | **Pending push** — https://nexuseos.github.io/NEXUS-website/ |
+| Mission Control | **Enhanced** — `AdminMissionControlNav` (27 subsystem links) |
+| ADRs | **257–260** — Production UI, Mission Control UX, Website Polish, Final UX |
+| Docs | `PRODUCTION_UI_AUDIT.md`, `WEBSITE_RENDER_REPORT.md`, `LIGHTHOUSE_REPORT.md`, etc. |
+
 ### Earlier epics referenced in STOP reports
 
 | Epic | Title | One-line summary |
@@ -181,11 +195,11 @@ Ecosystem repository audit, CI lint/build stabilization, Mission Control CI Heal
 | Repository | Build (verified 2026-07-20) | Key packages / surfaces | Latest epic work |
 |------------|------------------------------|-------------------------|------------------|
 | **nexus-cloud** | **Pass** — `npx tsc --noEmit` | 50+ workspace packages; `@nexus-cloud/api`, `connection-orchestrator`, `mission-control`, `automation-engine`, `executive-platform`, `production-operations`, `launch-validation`, `live-services`, `platform-operations` | EPICs 66–68 complete; EPIC 65 production activation |
-| **nexus-website** | **Pass** — `npm run lint`, `npm run build` (bundle warning: `three` chunk >500 kB) | Vite SPA; `@nexus/platform`, Supabase auth; admin, developer, sponsor portals | EPIC 70 CI stabilization; EPIC 64 website completion |
+| **nexus-website** | **Pass** — `npm run lint`, `npm run build:pages:shims` | Vite SPA; production shims; admin Mission Control | EPIC 71 production UI recovery |
 | **nexus-studio** | **Pass** — `npx tsc --noEmit` | Electron + Command Center (100+ panels); Mission Control first in grid after wizards | EPIC 70 `CiBuildHealthPanel`; EPICs 66–68 panels |
 | **nexus-sdk** | **Pass** — `tsc` | 19 packages: `behavior`, `simulation`, `ros`, `cli`, `atlas`, `ai`, `fleet`, etc. | EPIC 53 CLI `connect validate` |
 | **nexus-platform** | **Pass** — `tsc` | 12 packages: `ui`, `auth`, `theme`, `integration`, `analytics`, `cms-renderer`, etc. | Shared foundation for website and studio |
-| **nexus-specifications** | Documentation repo (no `package.json`) | ADRs through **ADR-256** (Production Certification Dashboard) | ADR-245–256 cover EPICs 66–68 |
+| **nexus-specifications** | Documentation repo (no `package.json`) | ADRs through **ADR-260** (Final User Experience) | ADR-257–260 cover EPIC 71 |
 
 **Git remote (nexus-website):** `https://github.com/NEXUSEOS/nexus-website.git`
 

@@ -1,0 +1,40 @@
+.mission-control-nav {
+  margin-top: var(--spacing-8);
+}
+
+.mission-control-nav__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+.mission-control-nav__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-glass);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+}
+
+.mission-control-nav__card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.mission-control-nav__label {
+  font-weight: var(--font-weight-title);
+  color: var(--color-accent);
+  font-size: var(--font-size-body);
+}
+
+.mission-control-nav__desc {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-caption);
+}

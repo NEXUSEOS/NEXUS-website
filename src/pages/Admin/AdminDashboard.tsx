@@ -4,6 +4,7 @@ import { useAsyncMount } from '../../hooks'
 import { fetchMissionControlHomepage, runMissionControlAction } from '../../services/platform/missionControlService'
 import { fetchAdminWizardHub } from '../../services/platform/adminExperienceService'
 import AdminCiHealthWidget from './AdminCiHealthWidget'
+import AdminMissionControlNav from './AdminMissionControlNav'
 
 type MissionAction = {
   id: string
@@ -116,6 +117,8 @@ export default function AdminDashboard() {
       </section>
 
       <AdminCiHealthWidget overview={ciHealth ?? null} />
+
+      <AdminMissionControlNav />
 
       {Object.keys(overviews).length > 0 && (
         <section>

@@ -24,6 +24,8 @@ function nodeModule(relativePath: string) {
   return path.resolve(websiteNodeModules, relativePath)
 }
 
+const forceShims = process.env.VITE_FORCE_SHIMS === 'true'
+
 /** Prefer sibling monorepo packages when present locally; fall back to committed shims for CI. */
 function resolveNexus(
   shimName: string,
@@ -31,6 +33,7 @@ function resolveNexus(
 ) {
   const extension = options.extension ?? 'ts'
   const shimPath = `${shim(shimName)}.${extension}`
+  if (forceShims) return shimPath
   if (options.sibling && existsSync(options.sibling)) return options.sibling
   if (options.nodeModule && existsSync(options.nodeModule)) return options.nodeModule
   return shimPath
@@ -125,12 +128,15 @@ export default defineConfig({
       }),
       '@nexus/aether': resolveNexus('aether', {
         nodeModule: nodeModule('@nexus/aether/index.ts'),
+        extension: 'tsx',
       }),
       '@nexus/aether/src/aetherContext': resolveNexus('aether', {
         nodeModule: nodeModule('@nexus/aether/src/aetherContext.ts'),
+        extension: 'tsx',
       }),
       '@nexus/aether/src/utils': resolveNexus('aether', {
         nodeModule: nodeModule('@nexus/aether/src/utils.ts'),
+        extension: 'tsx',
       }),
     },
     dedupe: ['react', 'react-dom', 'react-router-dom'],

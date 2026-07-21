@@ -31,8 +31,27 @@ export interface AetherProviderProps {
   colors?: Colors
 }
 
-export const AetherBackground = null as unknown as Component<Record<string, unknown>>
-export const AetherProvider = null as unknown as Component<AetherProviderProps>
+/** Lightweight gradient background for CI / GitHub Pages when Three.js bundle is deferred. */
+export function AetherBackground() {
+  return (
+    <div
+      className="aether-shim-bg"
+      aria-hidden="true"
+      style={{
+        position: 'absolute',
+        inset: 0,
+        background:
+          'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 184, 150, 0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 100%, rgba(180, 131, 139, 0.08) 0%, transparent 50%), var(--color-background, #050505)',
+        pointerEvents: 'none',
+      }}
+    />
+  )
+}
+
+export function AetherProvider({ children }: AetherProviderProps) {
+  return children
+}
+
 export const AetherScene = null as unknown as Component<Record<string, unknown>>
 export const AmbientGlow = null as unknown as Component<Record<string, unknown>>
 export const DepthFog = null as unknown as Component<Record<string, unknown>>

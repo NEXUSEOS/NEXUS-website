@@ -1,1 +1,126 @@
-/* Minimal theme globals for CI and standalone builds. */
+:root {
+  /* Colors */
+  --color-background: #050505;
+  --color-surface: #1a1a1c;
+  --color-glass: rgba(248, 246, 241, 0.06);
+  --color-text: #f8f6f1;
+  --color-text-muted: #a8a8b0;
+  --color-border: rgba(168, 168, 176, 0.24);
+  --color-accent: #c9b896;
+  --color-accent-secondary: #b4838b;
+  --color-success: #6b9e78;
+  --color-warning: #c9a84c;
+  --color-danger: #b85c5c;
+
+  /* Typography */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --font-size-display: 4.5rem;
+  --font-size-heading: 3rem;
+  --font-size-title: 1.5rem;
+  --font-size-body: 1rem;
+  --font-size-caption: 0.75rem;
+
+  --line-height-display: 1.05;
+  --line-height-heading: 1.1;
+  --line-height-title: 1.25;
+  --line-height-body: 1.6;
+  --line-height-caption: 1.4;
+
+  --font-weight-display: 300;
+  --font-weight-heading: 400;
+  --font-weight-title: 500;
+  --font-weight-body: 400;
+  --font-weight-caption: 400;
+
+  --letter-spacing-display: 0.12em;
+  --letter-spacing-heading: 0.04em;
+  --letter-spacing-title: 0.02em;
+  --letter-spacing-body: 0.01em;
+  --letter-spacing-caption: 0.04em;
+
+  /* Spacing */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+
+  /* Radius */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px rgba(5, 5, 5, 0.4);
+  --shadow-md: 0 4px 12px rgba(5, 5, 5, 0.5);
+  --shadow-lg: 0 8px 24px rgba(5, 5, 5, 0.6);
+  --shadow-xl: 0 16px 48px rgba(5, 5, 5, 0.7);
+  --shadow-glow: 0 0 24px rgba(201, 184, 150, 0.2);
+
+  /* Blur */
+  --blur-none: 0;
+  --blur-sm: 8px;
+  --blur-md: 16px;
+  --blur-lg: 24px;
+  --blur-xl: 40px;
+
+  /* Motion */
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+
+  --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-sans);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100%;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}

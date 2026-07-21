@@ -35,6 +35,7 @@ jobs:
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_PAGES: 'true'
+          VITE_FORCE_SHIMS: 'true'
           VITE_NEXUS_CLOUD_URL: ${{ vars.VITE_NEXUS_CLOUD_URL || 'https://api.nexus.local' }}
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
