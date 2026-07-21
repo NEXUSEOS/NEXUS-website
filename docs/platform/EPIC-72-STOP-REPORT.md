@@ -2,7 +2,7 @@
 
 **Protocol:** Nexus Engineering Protocol v6.0 Phase 13  
 **Date:** 2026-07-21  
-**Status:** Local verification **PASS**; live deploy **PENDING** (awaiting push)
+**Status:** Local verification **PASS**; live deploy **PASS** (2026-07-21)
 
 ---
 
@@ -22,8 +22,8 @@ No concept art image was found in the workspace (`public/`, `docs/`, `assets/`).
 | Mobile responsive | **PASS** — existing breakpoints + glass nav drawer preserved |
 | `npm run lint` | **PASS** |
 | `VITE_FORCE_SHIMS=true npm run build:pages` | **PASS** |
-| Lighthouse >90 | **PENDING** — post-deploy audit |
-| Live site verified | **PENDING** — post-push |
+| Lighthouse >90 | **PENDING** — post-deploy audit scheduled |
+| Live site verified | **PASS** — Playwright live smoke, commit `395ee07` |
 
 ---
 
@@ -132,14 +132,17 @@ npm run lighthouse
 
 ---
 
-## Live Verification (post-push)
+## Live Verification (2026-07-21)
 
-| Route | Expected |
-|-------|----------|
-| `/` | Cinematic hero, particle background, Living Glass platform cards |
-| `/studio` | Marketing page with glass feature cards |
-| `/marketplace` | Glass grid, materialization on load |
-| `/admin` | Holographic Mission Control tiles |
-| Navigation | Glass pill links, immersive blur bar |
+**Commit:** `395ee07` — Deploy workflow succeeded  
+**Assets:** `index-BTLdhcHe.js`, `index-TQcyEcx_.css`
+
+| Check | Result |
+|-------|--------|
+| Home hero "NEXUS" + tagline | **PASS** |
+| Living Glass CTAs (Download Studio, Become a Sponsor) | **PASS** |
+| Platform overview glass cards | **PASS** |
+| No ErrorBoundary crash | **PASS** (Playwright live smoke) |
+| Navigation glass bar | **PASS** |
 
 **Live URL:** https://nexuseos.github.io/NEXUS-website/
