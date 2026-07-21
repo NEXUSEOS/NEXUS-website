@@ -1,10 +1,15 @@
 import { MarketingPage } from '../components/marketing'
 import type { RouteConfig } from '../config'
+import type { CinematicMode } from '../experience'
 import { productPages } from './productPages'
 
-export function createProductPage(route: RouteConfig, key: keyof typeof productPages) {
+export function createProductPage(
+  route: RouteConfig,
+  key: keyof typeof productPages,
+  cinematicMode?: CinematicMode,
+) {
   const content = productPages[key]
   return function ProductPage() {
-    return <MarketingPage route={route} {...content} />
+    return <MarketingPage route={route} {...content} cinematicMode={cinematicMode} />
   }
 }

@@ -11,7 +11,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .hero__content {
@@ -21,13 +21,54 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--spacing-6);
-  max-width: 720px;
-  padding: var(--spacing-12) var(--spacing-6);
+  gap: var(--spacing-8);
+  max-width: 800px;
+  padding: var(--spacing-16) var(--spacing-6);
+}
+
+.hero__logo-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.hero__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  letter-spacing: 0.18em;
+  font-weight: var(--font-weight-display);
+  background: linear-gradient(180deg, var(--color-text) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 40px rgba(201, 184, 150, 0.2));
+}
+
+@keyframes hero-glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.hero__logo-glow {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(ellipse at center, var(--lg-bloom, rgba(201, 184, 150, 0.25)) 0%, transparent 70%);
+  animation: hero-glow-pulse 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .hero__subtitle {
   max-width: 480px;
+  font-size: var(--font-size-title);
+  letter-spacing: var(--letter-spacing-heading);
+  line-height: var(--line-height-title);
 }
 
 .hero__actions {
@@ -35,8 +76,14 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-4);
-  margin-top: var(--spacing-4);
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-6);
+}
+
+.hero__actions .button,
+.hero__actions .living-glass-button {
+  min-width: 180px;
+  padding: var(--spacing-4) var(--spacing-8);
 }
 
 @media (max-width: 768px) {
@@ -44,12 +91,25 @@
     min-height: calc(100vh - 120px);
   }
 
+  .hero__content {
+    gap: var(--spacing-6);
+    padding: var(--spacing-12) var(--spacing-4);
+  }
+
   .hero__actions {
     flex-direction: column;
     width: 100%;
   }
 
-  .hero__actions .button {
+  .hero__actions .button,
+  .hero__actions .living-glass-button {
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__logo-glow {
+    animation: none;
+    opacity: 0.5;
   }
 }

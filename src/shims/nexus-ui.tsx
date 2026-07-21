@@ -32,7 +32,11 @@ export interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
 
 export function Button({ variant = 'primary', children, className, ...props }: ButtonProps) {
   return (
-    <button type="button" className={`button button--${variant}${className ? ` ${className}` : ''}`} {...props}>
+    <button
+      type="button"
+      className={`button living-glass-button living-glass-button--${variant}${className ? ` ${className}` : ''}`}
+      {...props}
+    >
       {children}
     </button>
   )
@@ -48,7 +52,7 @@ export function Container({ children, className, ...props }: ContainerProps) {
 
 export function GlassPanel({ children, className, ...props }: GlassPanelProps) {
   return (
-    <div className={`glass-panel${className ? ` ${className}` : ''}`} {...props}>
+    <div className={`living-glass living-glass-panel glass-panel${className ? ` ${className}` : ''}`} {...props}>
       {children}
     </div>
   )

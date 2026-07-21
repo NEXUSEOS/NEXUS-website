@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, GlassPanel, Heading, Text } from '@nexus/ui'
+import { HolographicHealthWidget, HolographicPanel } from '../../experience'
 import { useAsyncMount } from '../../hooks'
 import { fetchMissionControlHomepage, runMissionControlAction } from '../../services/platform/missionControlService'
 import { fetchConnectionHealthMatrix } from '../../services/platform/connectionOrchestratorService'
@@ -89,7 +90,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <GlassPanel className="admin-page">
+    <GlassPanel className="admin-page cx-surface cx-surface--mission">
       <Heading as="h2" level="title">NEXUS Mission Control</Heading>
       <Text variant="caption">Administrator homepage — configure everything through UI wizards. Zero code access required.</Text>
       <Text variant="muted">Open NEXUS Studio → Command Center for full panel navigation and wizard hub.</Text>
@@ -119,30 +120,34 @@ export default function AdminDashboard() {
       {actionMessage && <p role="status">{actionMessage}</p>}
 
       {(Object.keys(kpiTiles).length > 0 || degraded) && (
-        <section>
-          <Heading as="h3" level="title">Platform KPIs</Heading>
-          <div className="admin-stats">
-            {[
-              ['Platform Health', kpiTiles.platformHealthScore],
-              ['Connection Orchestrator', kpiTiles.connectionOrchestratorStatus],
-              ['Active Users', kpiTiles.activeUsers],
-              ['Organizations', kpiTiles.organizations],
-              ['Marketplace Revenue', kpiTiles.marketplaceRevenue],
-              ['Subscriptions', kpiTiles.subscriptions],
-              ['Sponsors', kpiTiles.sponsors],
-              ['Developers', kpiTiles.developers],
-              ['Security', kpiTiles.security],
-              ['Production', kpiTiles.production],
-              ['Billing', kpiTiles.billing],
-              ['AI', kpiTiles.ai],
-            ].map(([label, value]) => (
-              <div className="admin-stat" key={String(label)}>
-                <Text variant="caption">{String(label)}</Text>
-                <strong>{String(value ?? 0)}{typeof value === 'number' && String(label).includes('Health') ? '%' : ''}</strong>
-              </div>
-            ))}
-          </div>
-        </section>
+        <HolographicPanel label="Platform Telemetry" pulse>
+          <section>
+            <Heading as="h3" level="title">Platform KPIs</Heading>
+            <div className="admin-stats lg-materialize-stagger">
+              {[
+                ['Platform Health', kpiTiles.platformHealthScore, 'healthy'],
+                ['Connection Orchestrator', kpiTiles.connectionOrchestratorStatus, 'unknown'],
+                ['Active Users', kpiTiles.activeUsers, 'unknown'],
+                ['Organizations', kpiTiles.organizations, 'unknown'],
+                ['Marketplace Revenue', kpiTiles.marketplaceRevenue, 'unknown'],
+                ['Subscriptions', kpiTiles.subscriptions, 'unknown'],
+                ['Sponsors', kpiTiles.sponsors, 'unknown'],
+                ['Developers', kpiTiles.developers, 'unknown'],
+                ['Security', kpiTiles.security, 'unknown'],
+                ['Production', kpiTiles.production, 'unknown'],
+                ['Billing', kpiTiles.billing, 'unknown'],
+                ['AI', kpiTiles.ai, 'unknown'],
+              ].map(([label, value, status]) => (
+                <HolographicHealthWidget
+                  key={String(label)}
+                  label={String(label)}
+                  value={`${String(value ?? 0)}${typeof value === 'number' && String(label).includes('Health') ? '%' : ''}`}
+                  status={status as 'healthy' | 'unknown'}
+                />
+              ))}
+            </div>
+          </section>
+        </HolographicPanel>
       )}
 
       {serviceTiles.length > 0 && <AdminServiceTiles tiles={serviceTiles} />}

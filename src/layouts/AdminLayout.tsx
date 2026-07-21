@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { GlassPanel, Heading, Text } from '@nexus/ui'
+import { HolographicLabel } from '../experience'
 import './AdminLayout.css'
 import '../pages/Admin/AdminPages.css'
 
@@ -22,8 +23,9 @@ const ADMIN_NAV: Array<{ path: string; label: string; end?: boolean }> = [
 
 export default function AdminLayout() {
   return (
-    <div className="admin-layout">
+    <div className="admin-layout cx-surface cx-surface--bridge">
       <GlassPanel className="admin-layout__sidebar">
+        <HolographicLabel>Bridge Mode</HolographicLabel>
         <Heading as="h1" level="title">Platform Control Center</Heading>
         <Text variant="caption">NEXUS Administration</Text>
         <nav className="admin-layout__nav" aria-label="Platform administration">

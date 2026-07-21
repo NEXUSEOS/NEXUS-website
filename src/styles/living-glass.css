@@ -1,0 +1,397 @@
+/* EPIC 72 — Living Glass design tokens & global experience layer */
+
+:root {
+  /* Living Glass surfaces */
+  --lg-glass-bg: rgba(248, 246, 241, 0.04);
+  --lg-glass-bg-hover: rgba(248, 246, 241, 0.08);
+  --lg-glass-border: rgba(201, 184, 150, 0.18);
+  --lg-glass-border-hover: rgba(201, 184, 150, 0.35);
+  --lg-glass-edge-light: rgba(232, 220, 200, 0.12);
+  --lg-glass-inner-glow: rgba(201, 184, 150, 0.06);
+  --lg-glass-blur: 24px;
+  --lg-glass-radius: var(--radius-2xl, 1.5rem);
+  --lg-glass-shadow:
+    0 4px 24px rgba(5, 5, 5, 0.4),
+    0 0 0 1px rgba(201, 184, 150, 0.06) inset,
+    0 1px 0 rgba(248, 246, 241, 0.08) inset;
+  --lg-glass-shadow-hover:
+    0 8px 40px rgba(5, 5, 5, 0.5),
+    0 0 32px rgba(201, 184, 150, 0.12),
+    0 0 0 1px rgba(201, 184, 150, 0.12) inset,
+    0 1px 0 rgba(248, 246, 241, 0.12) inset;
+
+  /* Depth & atmosphere */
+  --lg-depth-fog: rgba(5, 5, 5, 0.6);
+  --lg-nebula-primary: rgba(201, 184, 150, 0.14);
+  --lg-nebula-secondary: rgba(180, 131, 139, 0.1);
+  --lg-bloom: rgba(201, 184, 150, 0.25);
+  --lg-mist: rgba(168, 168, 176, 0.06);
+
+  /* Motion — materialization system */
+  --lg-duration-materialize: 680ms;
+  --lg-duration-dissolve: 420ms;
+  --lg-easing-materialize: cubic-bezier(0.16, 1, 0.3, 1);
+  --lg-easing-dissolve: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Reduced motion: disable decorative animation */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --lg-duration-materialize: 1ms;
+    --lg-duration-dissolve: 1ms;
+  }
+
+  .lg-materialize,
+  .lg-mist-dissolve,
+  .lg-particle-loader__dot,
+  .hero__logo-glow,
+  .living-glass-nav::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Shared Living Glass surface */
+.living-glass {
+  position: relative;
+  background: var(--lg-glass-bg);
+  border: 1px solid var(--lg-glass-border);
+  border-radius: var(--lg-glass-radius);
+  backdrop-filter: blur(var(--lg-glass-blur));
+  -webkit-backdrop-filter: blur(var(--lg-glass-blur));
+  box-shadow: var(--lg-glass-shadow);
+  overflow: hidden;
+}
+
+.living-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--lg-glass-edge-light) 0%,
+    transparent 40%,
+    transparent 60%,
+    var(--lg-glass-inner-glow) 100%
+  );
+  pointer-events: none;
+}
+
+.living-glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(248, 246, 241, 0.15),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.living-glass--interactive {
+  transition:
+    background var(--duration-normal) var(--easing-default),
+    border-color var(--duration-normal) var(--easing-default),
+    box-shadow var(--duration-normal) var(--easing-default),
+    transform var(--duration-fast) var(--easing-out);
+}
+
+.living-glass--interactive:hover {
+  background: var(--lg-glass-bg-hover);
+  border-color: var(--lg-glass-border-hover);
+  box-shadow: var(--lg-glass-shadow-hover);
+}
+
+.living-glass--interactive:active {
+  transform: scale(0.985);
+}
+
+/* Materialization transition */
+@keyframes lg-materialize-in {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(16px) scale(0.97);
+  }
+  60% {
+    opacity: 0.85;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lg-dissolve-out {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(8px);
+  }
+}
+
+.lg-materialize {
+  animation: lg-materialize-in var(--lg-duration-materialize) var(--lg-easing-materialize) both;
+}
+
+.lg-mist-dissolve {
+  animation: lg-dissolve-out var(--lg-duration-dissolve) var(--lg-easing-dissolve) both;
+}
+
+/* Stagger children */
+.lg-materialize-stagger > * {
+  animation: lg-materialize-in var(--lg-duration-materialize) var(--lg-easing-materialize) both;
+}
+
+.lg-materialize-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.lg-materialize-stagger > *:nth-child(2) { animation-delay: 80ms; }
+.lg-materialize-stagger > *:nth-child(3) { animation-delay: 160ms; }
+.lg-materialize-stagger > *:nth-child(4) { animation-delay: 240ms; }
+.lg-materialize-stagger > *:nth-child(5) { animation-delay: 320ms; }
+.lg-materialize-stagger > *:nth-child(6) { animation-delay: 400ms; }
+
+/* Particle loader */
+@keyframes lg-particle-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.lg-particle-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  min-height: 40vh;
+}
+
+.lg-particle-loader__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px var(--lg-bloom);
+  animation: lg-particle-pulse 1.2s var(--easing-in-out) infinite;
+}
+
+.lg-particle-loader__dot:nth-child(2) { animation-delay: 0.15s; }
+.lg-particle-loader__dot:nth-child(3) { animation-delay: 0.3s; }
+.lg-particle-loader__dot:nth-child(4) { animation-delay: 0.45s; }
+.lg-particle-loader__dot:nth-child(5) { animation-delay: 0.6s; }
+
+.lg-particle-loader__label {
+  margin-top: var(--spacing-4);
+  font-size: var(--font-size-caption);
+  letter-spacing: var(--letter-spacing-caption);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+/* Living Glass button (extends .button) */
+.living-glass-button {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  transition:
+    background var(--duration-normal) var(--easing-default),
+    border-color var(--duration-normal) var(--easing-default),
+    box-shadow var(--duration-normal) var(--easing-default),
+    transform var(--duration-fast) var(--easing-out);
+}
+
+.living-glass-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(248, 246, 241, 0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-normal);
+  pointer-events: none;
+}
+
+.living-glass-button:hover::before {
+  opacity: 1;
+}
+
+.living-glass-button--primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #b8a078 100%);
+  border-color: rgba(201, 184, 150, 0.5);
+  box-shadow: 0 4px 20px rgba(201, 184, 150, 0.25), var(--shadow-glow);
+  color: var(--color-background);
+}
+
+.living-glass-button--primary:hover {
+  box-shadow: 0 6px 28px rgba(201, 184, 150, 0.35), 0 0 40px rgba(201, 184, 150, 0.15);
+  transform: translateY(-1px);
+}
+
+.living-glass-button--secondary {
+  background: var(--lg-glass-bg);
+  border-color: var(--lg-glass-border);
+  box-shadow: var(--lg-glass-shadow);
+  color: var(--color-text);
+}
+
+.living-glass-button--secondary:hover {
+  background: var(--lg-glass-bg-hover);
+  border-color: var(--lg-glass-border-hover);
+  box-shadow: var(--lg-glass-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.living-glass-button--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-text-muted);
+}
+
+.living-glass-button--ghost:hover {
+  color: var(--color-accent);
+  background: var(--lg-glass-bg);
+}
+
+/* Living Glass input */
+.living-glass-input {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--lg-glass-border);
+  background: var(--lg-glass-bg);
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: var(--font-size-body);
+  transition:
+    border-color var(--duration-normal),
+    box-shadow var(--duration-normal),
+    background var(--duration-normal);
+}
+
+.living-glass-input:focus {
+  outline: none;
+  border-color: var(--lg-glass-border-hover);
+  box-shadow: 0 0 0 3px rgba(201, 184, 150, 0.12), var(--shadow-glow);
+  background: var(--lg-glass-bg-hover);
+}
+
+.living-glass-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Living Glass card & panel */
+.living-glass-card {
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.living-glass-panel {
+  padding: var(--spacing-6);
+}
+
+/* Immersive navigation shell */
+.living-glass-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: var(--spacing-3) 0;
+  background: rgba(5, 5, 5, 0.55);
+  backdrop-filter: blur(var(--blur-xl));
+  -webkit-backdrop-filter: blur(var(--blur-xl));
+  border-bottom: 1px solid var(--lg-glass-border);
+}
+
+.living-glass-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--lg-nebula-primary) 0%, transparent 100%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Mission Control holographic widgets */
+.mc-hologram {
+  position: relative;
+  padding: var(--spacing-5);
+  border-radius: var(--radius-xl);
+  background: var(--lg-glass-bg);
+  border: 1px solid var(--lg-glass-border);
+  backdrop-filter: blur(var(--lg-glass-blur));
+  -webkit-backdrop-filter: blur(var(--lg-glass-blur));
+  box-shadow: var(--lg-glass-shadow);
+}
+
+.mc-hologram::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0.6;
+}
+
+.mc-hologram--pulse::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid var(--color-accent);
+  opacity: 0;
+  animation: mc-pulse-ring 3s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mc-pulse-ring {
+  0% { opacity: 0.4; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.02); }
+}
+
+.mc-stat-value {
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-display);
+  letter-spacing: var(--letter-spacing-display);
+  color: var(--color-accent);
+  text-shadow: 0 0 24px var(--lg-bloom);
+}
+
+/* Aether shim canvas layer */
+.aether-shim-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.aether-shim-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.aether-shim-mist {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, var(--lg-nebula-primary) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 85% 90%, var(--lg-nebula-secondary) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 15% 70%, var(--lg-mist) 0%, transparent 45%);
+  pointer-events: none;
+}

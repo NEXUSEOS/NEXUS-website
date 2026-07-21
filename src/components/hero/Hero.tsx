@@ -26,10 +26,13 @@ export default function Hero() {
         </div>
 
         <Container>
-          <div className="hero__content">
-            <Heading as="h1" level="display">
-              NEXUS
-            </Heading>
+          <div className="hero__content lg-materialize-stagger">
+            <div className="hero__logo-wrap">
+              <Heading as="h1" level="display" className="hero__title">
+                NEXUS
+              </Heading>
+              <div className="hero__logo-glow" aria-hidden="true" />
+            </div>
 
             <Text variant="muted" className="hero__subtitle">
               One Ecosystem.
@@ -40,13 +43,13 @@ export default function Hero() {
             <div className="hero__actions">
               <Link
                 to={routes.downloadMarketing?.path ?? '/download'}
-                className="button button--primary"
+                className="button living-glass-button living-glass-button--primary"
               >
                 Download Studio
               </Link>
               <Link
                 to={user ? routes.sponsors.path : routes.signUp.path}
-                className="button button--secondary"
+                className="button living-glass-button living-glass-button--secondary"
               >
                 Become a Sponsor
               </Link>

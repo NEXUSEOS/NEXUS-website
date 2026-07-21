@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { applyThemeMode } from '@nexus/theme'
+import { AdaptiveAnimationProvider } from './experience/adaptive'
 import AuthProvider from './contexts/AuthProvider'
 import { loadCloudFeatureFlags } from './config/features'
 import LoadingFallback from './router/LoadingFallback'
@@ -24,8 +25,10 @@ export default function Bootstrap() {
   if (!ready) return <LoadingFallback />
 
   return (
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <AdaptiveAnimationProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </AdaptiveAnimationProvider>
   )
 }

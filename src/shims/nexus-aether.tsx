@@ -1,4 +1,5 @@
 import type { Colors } from './nexus-theme'
+import ParticleFieldCanvas from '../components/living-glass/ParticleFieldCanvas'
 
 export type AetherPerformance = 'low' | 'medium' | 'high'
 
@@ -31,20 +32,22 @@ export interface AetherProviderProps {
   colors?: Colors
 }
 
-/** Lightweight gradient background for CI / GitHub Pages when Three.js bundle is deferred. */
+/** EPIC 72 — Living particle field + volumetric mist for GitHub Pages shim mode. */
 export function AetherBackground() {
   return (
-    <div
-      className="aether-shim-bg"
-      aria-hidden="true"
-      style={{
-        position: 'absolute',
-        inset: 0,
-        background:
-          'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 184, 150, 0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 100%, rgba(180, 131, 139, 0.08) 0%, transparent 50%), var(--color-background, #050505)',
-        pointerEvents: 'none',
-      }}
-    />
+    <div className="aether-shim-bg" aria-hidden="true">
+      <div
+        className="aether-shim-mist"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 184, 150, 0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 100%, rgba(180, 131, 139, 0.08) 0%, transparent 50%), var(--color-background, #050505)',
+          pointerEvents: 'none',
+        }}
+      />
+      <ParticleFieldCanvas />
+    </div>
   )
 }
 

@@ -1,0 +1,92 @@
+/* EPIC 73 — Dynamic ambient environment layers */
+
+.cx-ambient {
+  position: relative;
+  min-height: 100vh;
+  --cx-parallax-x: 0;
+  --cx-parallax-y: 0;
+}
+
+.cx-ambient__content {
+  position: relative;
+  z-index: 1;
+}
+
+.cx-ambient__layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cx-ambient__nebula {
+  background:
+    radial-gradient(
+      ellipse 70% 50% at calc(50% + var(--cx-parallax-x) * 8%) calc(20% + var(--cx-parallax-y) * 5%),
+      var(--lg-nebula-primary) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at calc(85% - var(--cx-parallax-x) * 5%) calc(90% + var(--cx-parallax-y) * 3%),
+      var(--lg-nebula-secondary) 0%,
+      transparent 50%
+    );
+  opacity: 0.85;
+  transition: opacity 600ms ease;
+}
+
+.cx-ambient__mist {
+  background: radial-gradient(
+    ellipse 100% 60% at 50% 100%,
+    var(--lg-mist, rgba(168, 168, 176, 0.06)) 0%,
+    transparent 60%
+  );
+}
+
+.cx-ambient__particles {
+  opacity: 0.7;
+}
+
+.cx-ambient__waves {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    hsla(var(--cx-ambient-hue, 38), 40%, 50%, 0.03) 50%,
+    transparent 100%
+  );
+  animation: cx-energy-wave 12s ease-in-out infinite;
+  transform: translateY(calc(var(--cx-parallax-y) * 10px));
+}
+
+@keyframes cx-energy-wave {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.6; transform: translateY(-20px); }
+}
+
+[data-cinematic-mode='bridge'] .cx-ambient__nebula {
+  opacity: 1;
+}
+
+[data-cinematic-mode='showroom'] .cx-ambient__particles {
+  opacity: 0.5;
+}
+
+[data-cinematic-mode='studio'] .cx-ambient__waves {
+  animation-duration: 16s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cx-ambient__waves {
+    animation: none;
+  }
+
+  .cx-ambient__nebula {
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .cx-ambient__particles {
+    opacity: 0.35;
+  }
+}

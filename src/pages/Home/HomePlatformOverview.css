@@ -1,23 +1,28 @@
 .home-platform {
-  padding-block: var(--spacing-12);
+  padding-block: var(--spacing-20);
+  position: relative;
 }
 
 .home-platform__intro {
   text-align: center;
-  margin-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-12);
+}
+
+.home-platform__intro .heading {
+  background: linear-gradient(180deg, var(--color-text) 0%, var(--color-accent) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .home-platform__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--spacing-6);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-8);
 }
 
 .home-platform__card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3);
-  padding: var(--spacing-6);
+  min-height: 200px;
 }
 
 .home-platform__link {
@@ -28,7 +33,12 @@
 .home-platform__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-4);
+  gap: var(--spacing-5);
   justify-content: center;
-  margin-top: var(--spacing-10);
+  margin-top: var(--spacing-16);
+}
+
+.home-platform__actions .button,
+.home-platform__actions .living-glass-button {
+  min-width: 160px;
 }

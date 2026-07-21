@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { Footer, SkipLink } from '../components/layout'
+import { GlobalTransitionEngine } from '../experience'
 import { Breadcrumbs, Navigation } from '../components/navigation'
 import CmsAnnouncementsBanner from '../components/cms/CmsAnnouncementsBanner'
 import PageViewTracker from '../components/analytics/PageViewTracker'
@@ -18,7 +19,9 @@ export default function MainLayout() {
       <Breadcrumbs />
       <main id="main-content" className="main-layout__content" tabIndex={-1}>
         <ErrorBoundary>
-          <Outlet />
+          <GlobalTransitionEngine>
+            <Outlet />
+          </GlobalTransitionEngine>
         </ErrorBoundary>
       </main>
       <Footer />

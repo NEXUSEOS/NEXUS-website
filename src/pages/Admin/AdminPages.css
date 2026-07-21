@@ -1,145 +1,174 @@
 .admin-page {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-5, 1.25rem);
-  padding: var(--spacing-5, 1.25rem);
+  gap: var(--spacing-6);
+  padding: var(--spacing-8);
 }
 
 .admin-page__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-3, 0.75rem);
+  gap: var(--spacing-3);
   align-items: center;
 }
 
 .admin-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: var(--spacing-4, 1rem);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--spacing-5);
 }
 
 .admin-stat {
-  padding: var(--spacing-4, 1rem);
-  border-radius: var(--radius-md, 8px);
-  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
-  background: var(--color-glass, rgba(255, 255, 255, 0.04));
+  position: relative;
+  padding: var(--spacing-5);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--lg-glass-border, rgba(201, 184, 150, 0.18));
+  background: var(--lg-glass-bg, rgba(248, 246, 241, 0.04));
+  backdrop-filter: blur(var(--lg-glass-blur, 24px));
+  -webkit-backdrop-filter: blur(var(--lg-glass-blur, 24px));
+  box-shadow: var(--lg-glass-shadow);
+  overflow: hidden;
+}
+
+.admin-stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0.5;
 }
 
 .admin-stat strong {
   display: block;
-  font-size: var(--font-size-title, 1.25rem);
-  margin-top: var(--spacing-1, 0.25rem);
+  font-size: var(--font-size-title);
+  margin-top: var(--spacing-2);
+  color: var(--color-accent);
+  text-shadow: 0 0 20px var(--lg-bloom, rgba(201, 184, 150, 0.25));
 }
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: var(--font-size-body, 0.9375rem);
+  font-size: var(--font-size-body);
 }
 
 .admin-table th,
 .admin-table td {
-  padding: var(--spacing-2, 0.5rem) var(--spacing-3, 0.75rem);
+  padding: var(--spacing-3) var(--spacing-4);
   text-align: left;
-  border-bottom: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+  border-bottom: 1px solid var(--lg-glass-border, var(--color-border));
 }
 
 .admin-banner {
-  padding: var(--spacing-4, 1rem);
-  border-radius: var(--radius-md, 8px);
-  border: 1px solid var(--color-warning, rgba(255, 193, 7, 0.4));
-  background: rgba(255, 193, 7, 0.08);
+  padding: var(--spacing-4) var(--spacing-5);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-warning, rgba(201, 168, 76, 0.4));
+  background: rgba(201, 168, 76, 0.08);
+  backdrop-filter: blur(var(--blur-sm));
 }
 
 .admin-banner--info {
-  border-color: var(--color-accent, rgba(100, 180, 255, 0.4));
-  background: rgba(100, 180, 255, 0.08);
+  border-color: var(--color-accent);
+  background: rgba(201, 184, 150, 0.08);
 }
 
 .admin-connection-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--spacing-4, 1rem);
-  margin-top: var(--spacing-4, 1rem);
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-5);
 }
 
 .admin-connection-card {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2, 0.5rem);
-  padding: var(--spacing-4, 1rem);
+  gap: var(--spacing-3);
+  padding: var(--spacing-5);
 }
 
 .admin-connection-card__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--spacing-2, 0.5rem);
+  gap: var(--spacing-2);
 }
 
 .admin-connection-card__status {
-  font-size: var(--font-size-caption, 0.8125rem);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm, 4px);
+  font-size: var(--font-size-caption);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
   text-transform: capitalize;
+  backdrop-filter: blur(var(--blur-sm));
 }
 
 .admin-connection-card__status--connected {
-  background: rgba(76, 175, 80, 0.2);
-  color: #81c784;
+  background: rgba(107, 158, 120, 0.2);
+  color: #8bc99a;
+  box-shadow: 0 0 12px rgba(107, 158, 120, 0.15);
 }
 
 .admin-connection-card__status--configuration_required,
 .admin-connection-card__status--not_configured {
-  background: rgba(255, 193, 7, 0.15);
-  color: #ffd54f;
+  background: rgba(201, 168, 76, 0.15);
+  color: #e8c96e;
 }
 
 .admin-connection-card__status--validation_failed,
 .admin-connection-card__status--offline {
-  background: rgba(244, 67, 54, 0.15);
-  color: #ef9a9a;
+  background: rgba(184, 92, 92, 0.15);
+  color: #e88a8a;
 }
 
 .admin-connection-card__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-2, 0.5rem);
-  margin-top: var(--spacing-2, 0.5rem);
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-2);
 }
 
 .admin-service-tiles {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--spacing-3, 0.75rem);
-  margin-top: var(--spacing-4, 1rem);
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-5);
 }
 
 .admin-service-tile {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1, 0.25rem);
-  padding: var(--spacing-3, 0.75rem);
-  border-radius: var(--radius-md, 8px);
-  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
-  background: var(--color-glass, rgba(255, 255, 255, 0.04));
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--lg-glass-border);
+  background: var(--lg-glass-bg);
+  backdrop-filter: blur(var(--lg-glass-blur));
+  -webkit-backdrop-filter: blur(var(--lg-glass-blur));
+  box-shadow: var(--lg-glass-shadow);
   text-decoration: none;
   color: inherit;
-  transition: border-color var(--duration-fast, 0.15s);
+  transition:
+    border-color var(--duration-normal),
+    box-shadow var(--duration-normal),
+    transform var(--duration-fast);
 }
 
 .admin-service-tile:hover {
-  border-color: var(--color-accent, rgba(100, 180, 255, 0.5));
+  border-color: var(--lg-glass-border-hover);
+  box-shadow: var(--lg-glass-shadow-hover);
+  transform: translateY(-2px);
 }
 
 .admin-service-tile__name {
   font-weight: 600;
-  font-size: var(--font-size-body, 0.9375rem);
+  font-size: var(--font-size-body);
 }
 
 .admin-service-tile__meta {
-  font-size: var(--font-size-caption, 0.8125rem);
-  color: var(--color-text-muted, rgba(255, 255, 255, 0.6));
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
   text-transform: capitalize;
 }
 
@@ -148,5 +177,14 @@
 }
 
 .admin-service-tile--static:hover {
-  border-color: var(--color-border, rgba(255, 255, 255, 0.08));
+  border-color: var(--lg-glass-border);
+  transform: none;
+}
+
+/* Mission Control bridge header glow */
+.admin-page > .heading:first-of-type {
+  background: linear-gradient(90deg, var(--color-text), var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

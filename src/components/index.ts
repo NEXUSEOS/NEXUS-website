@@ -1,6 +1,7 @@
 export * from './aether'
 export * from './hero'
 export * from './layout'
+export * from './living-glass'
 export * from './navigation'
 export * from './seo'
 export * from './ui'
