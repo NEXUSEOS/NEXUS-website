@@ -2,7 +2,7 @@
 
 **Protocol:** Nexus Engineering Protocol v6.0 Phase 13  
 **Date:** 2026-07-21  
-**Status:** Local verification **PASS**; live deploy **PENDING PUSH**
+**Status:** Local verification **PASS**; live deploy **PASS** (2026-07-21)
 
 ---
 
@@ -15,8 +15,8 @@
 | Local route render (Playwright) | **PASS** — 6 routes, all hasContent |
 | ESLint | **PASS** |
 | Mission Control quick nav | **PASS** — 27 subsystem links |
-| Live GitHub Pages visual | **PENDING** — awaiting deploy after push |
-| Lighthouse >95 | **DEFERRED** — post-deploy audit |
+| Live GitHub Pages visual | **PASS** — https://nexuseos.github.io/NEXUS-website/ |
+| Lighthouse >95 | **DEFERRED** — post-deploy audit scheduled |
 
 ---
 
@@ -61,8 +61,20 @@ PLAYWRIGHT_BROWSERS_PATH=.pw-browsers npx playwright test e2e/production-health.
 
 ---
 
-## Remaining work
+## Deploy verification (live)
 
-1. Push and verify https://nexuseos.github.io/NEXUS-website/ renders visually
-2. Run Lighthouse post-deploy; update `LIGHTHOUSE_REPORT.md` with scores
-3. Configure `VITE_SUPABASE_URL` / `VITE_NEXUS_CLOUD_URL` GitHub secrets for full auth + live KPIs
+**Commit:** `6fb751b` — Deploy workflow `29839535500` succeeded  
+**New assets:** `index-D-1xhpqG.js`, `index-DfpLObeZ.css` (includes `:root` tokens)
+
+| Route | Body length | Status |
+|-------|-------------|--------|
+| `/` | 1446 | PASS |
+| `/about` | 1040 | PASS |
+| `/technology` | 995 | PASS |
+| `/marketplace` | 917 | PASS |
+| `/status` | 807 | PASS |
+| `/pricing` | 854 | PASS |
+| `/admin` | 814 | PASS |
+| `/sdk` | 1082 | PASS |
+
+No React runtime errors on live home page.

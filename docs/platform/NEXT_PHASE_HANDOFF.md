@@ -176,7 +176,7 @@ GitHub Pages white screen recovery, production-grade `@nexus/*` shims, Mission C
 | Root cause | **Identified** — null config shims + empty CSS globals in CI build |
 | Shim-only build | **Pass** — `VITE_FORCE_SHIMS=true npm run build:pages` |
 | Local render verify | **Pass** — Playwright smoke on 6 routes |
-| Live Pages verify | **Pending push** — https://nexuseos.github.io/NEXUS-website/ |
+| Live Pages verify | **Pass** — 8 routes verified on https://nexuseos.github.io/NEXUS-website/ |
 | Mission Control | **Enhanced** — `AdminMissionControlNav` (27 subsystem links) |
 | ADRs | **257–260** — Production UI, Mission Control UX, Website Polish, Final UX |
 | Docs | `PRODUCTION_UI_AUDIT.md`, `WEBSITE_RENDER_REPORT.md`, `LIGHTHOUSE_REPORT.md`, etc. |
