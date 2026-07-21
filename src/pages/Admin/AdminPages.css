@@ -18,6 +18,10 @@
   gap: var(--spacing-5);
 }
 
+.admin-stats .cx-health {
+  padding: var(--spacing-4);
+}
+
 .admin-stat {
   position: relative;
   padding: var(--spacing-5);

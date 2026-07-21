@@ -5,7 +5,7 @@ import HomePlatformOverview from './HomePlatformOverview'
 
 export default function Home() {
   return (
-    <>
+    <div className="cx-surface">
       <StructuredData
         type="WebSite"
         name="NEXUS Robotics"
@@ -14,6 +14,6 @@ export default function Home() {
       />
       <Hero />
       <HomePlatformOverview />
-    </>
+    </div>
   )
 }
